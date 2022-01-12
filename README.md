@@ -1,34 +1,34 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Rafi Codes | Portfolio
 
-## Getting Started
+## About
+This repository hosts the source code for my website, [rafi-codes.dev](https://www.rafi-codes.dev). I built this
+project using the Next.js React framework. This is the second iteration of my portfolio. Version 1.0 can be found
+[here](https://github.com/Rafi-99/Portfolio-Website).
 
-First, run the development server:
+## How It Works
+* This codebase is a monorepo that contains both the front-end and back-end of my site
+* Front-end: Next.js
+* Back-end: Next.js + MongoDB
+* Page routing is handled by Next.js through the <code>src/pages</code> directory
+* About Me page pulls the latest information from the database on each request, thanks to Next.js SSR
+* Contact Me page uses Nodemailer + Google APIs to send form data to my email via an API route on my site
+* Cool 3D animations are provided with the Three.js library
+* All other animations are implemented with CSS
+* Will update this accordingly!
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Key Things I Learned
+* React.js basics and fundamentals
+* Next.js basics and fundamentals
+* How to create a highly performant app leveraging Next.js built-in features
+* How to improve search engine optimization (SEO)
+* How to create a full-stack Progressive Web App (PWA)
+* How to design a clean User Interface (UI)
+* How to give users a smooth User Experience (UX)
+* How to implement custom styling without a CSS framework
+* How to achieve mobile responsiveness with almost 0 media queries
+* And much more!
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Current Plans
+* Continue to implement improvements/optimizations to the site, no matter how minor
+* Stay up-to-date with current web technologies/trends and implement new features accordingly
+* Implement the next version with Next.js and Three.js
