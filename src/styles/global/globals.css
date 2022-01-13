@@ -1,0 +1,47 @@
+html, body {
+    padding: 0;
+    margin: 0;
+    max-width: 100%;
+    min-height: 100vh;
+    background: #202020;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    font-size: 100%;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+    overflow: overlay;
+    scroll-behavior: smooth;
+}
+
+h1 {
+    font-weight: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+    background: transparent;
+    width: 10px;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+}
+
+#__next {
+    display: flex;
+    flex-direction: column;
+    min-height: inherit;
+}
+
+.overlay {
+    overflow: hidden;
+    height: 100vh;
+}

@@ -1,0 +1,74 @@
+.cards_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 500px));
+    grid-gap: 2rem;
+    padding: 0 2rem;
+    margin: 2rem auto;
+    justify-content: center;
+}
+
+.cards_container > div {
+    background: gainsboro;
+    color: black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 1);
+    animation: fadeUp 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-fill-mode: both;
+}
+
+.cards_container > div:nth-child(2) {
+    animation-delay: 0.25s;
+}
+
+.cards_container > div:nth-child(3) {
+    animation-delay: 0.50s;
+}
+
+.cards_container > div > h1, .cards_container > div > p {
+    padding: 0 1rem;
+}
+
+.cards_container > div > h1, .cards_container > div > h1 > a, .tools {
+    display: flex;
+    align-items: center;
+}
+
+.tools > svg {
+    font-size: 2rem;
+    color: royalblue;
+}
+
+.tools {
+    margin-left: auto;
+    padding: 1rem;
+    max-width: 50%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.intro {
+    text-align: center;
+    padding: 0 2rem;
+    animation: fadeUp 1.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    animation-fill-mode: both;
+}
+
+.cards_container > div > h1 a {
+    transition: ease-in-out 0.5s;
+}
+
+.cards_container > div > h1 a:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 0.5s;
+}
+
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0%);
+    }
+}

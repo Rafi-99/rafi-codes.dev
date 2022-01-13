@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://rafi-codes.dev
+
+# Sitemaps
+Sitemap: https://rafi-codes.dev/sitemap.xml

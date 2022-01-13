@@ -1,0 +1,40 @@
+.profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.picture {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.content {
+    text-align: center;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: auto;
+    padding: 0 2rem;
+    max-width: fit-content;
+}
+
+.links button {
+    font: inherit;
+    cursor: pointer;
+    border: 1px solid rgb(110, 140, 225);
+    border-radius: 5px;
+    padding: 0.25rem 1rem;
+    color: rgb(110, 140, 225);
+    background: transparent;
+}
+
+.links button:hover {
+    background: rgb(110, 140, 225);
+    color: black;
+}

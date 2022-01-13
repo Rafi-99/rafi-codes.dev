@@ -1,0 +1,108 @@
+.nav {
+    width: 100vw;
+    height: 50px;
+    background: #202020;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 1);
+    color: white;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: auto;
+    position: relative;
+    z-index: 2;
+}
+
+.nav a {
+    transition: ease-in-out 0.25s;
+}
+
+.nav a:hover {
+    filter: drop-shadow(0 0 3px gold);
+    transition: ease-in-out 0.25s;
+}
+
+.nav > ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.nav ul > li {
+    display: inline-block;
+    padding: 0 1rem;
+}
+
+.nav > ul > li > a, .brand, .home {
+    display: flex;
+    align-items: center;
+}
+
+.brand {
+    font-size: 1.5rem;
+}
+
+.brand > span {
+    width: 2rem !important;
+    height: 2rem !important;
+}
+
+.burger {
+    display: none;
+}
+
+.home {
+    padding: 0.25rem 1rem;
+    color: black;
+    border-radius: 5px;
+    background: white;
+}
+
+@media screen and (max-width: 678px) {
+    .nav {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .nav > ul a svg, ul.open a, ul.closed a {
+        font-size: 2rem;
+    }
+
+    ul.open, ul.closed {
+        position: absolute;
+        top: 50px;
+        width: 100vw;
+        background-color: rgba(32, 32, 32, 0.9);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .open {
+        overflow: hidden !important;
+        height: calc(100vh - 50px);
+        transition: height 0.5s ease;
+        position: fixed !important;
+        top: 50 !important;
+    }
+
+    .closed {
+        overflow: hidden;
+        height: 0px;
+        transition: height 0.5s ease;
+    }
+
+    .brand, .burger {
+        padding: 0.25rem 1rem;
+    }
+
+    .burger {
+        display: block;
+    }
+
+    .home {
+        display: none;
+    }
+}

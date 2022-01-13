@@ -1,0 +1,136 @@
+.intro {
+    max-width: 75ch;
+    text-align: center;
+    margin: 32px auto;
+    padding: 0 2rem;
+    animation: zoomIn 1s;
+}
+
+.picture {
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.titles{
+    text-align: center;
+    color: white;
+    animation: zoomIn 1s;
+}
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    margin: auto;
+    border-radius: 5px;
+    border: 1px solid royalblue;
+    color: royalblue;
+    background: transparent;
+    font: inherit;
+    padding: 0.25rem 1rem;
+
+}
+
+.button:hover {
+    background: royalblue;
+    color: black;
+}
+
+.jobs {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 720px));
+    justify-content: center;
+    padding: 0 2rem;
+}
+
+.jobs > div {
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    padding: 2rem;
+}
+
+.jobs > div > div p:before {
+    content: '• ';
+}
+
+.jobs > div > p, .skills > div > p:first-of-type {
+    font-weight: bold;
+}
+
+.jobs > div > p {
+    color: rgb(110, 140, 225);
+}
+
+.skills {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding: 0 2rem;
+    text-align: center;
+}
+
+.skills > div > svg {
+    font-size: 3rem;
+    fill: royalblue;
+}
+
+.skills > div:nth-child(1) > svg {
+    animation: stretchY 1s linear infinite;
+}
+
+.skills > div:nth-child(2) > svg {
+    animation: spin 2s linear infinite;
+}
+
+.skills > div:nth-child(3) > svg {
+    border-radius: 50%;
+    animation: stretchX 1s linear infinite;
+}
+
+.skills > div:nth-child(4) > svg {
+    animation: floating 1s linear infinite;
+}
+
+.skills > div > p:first-of-type {
+    color: royalblue;
+}
+
+.skills > div {
+    animation: zoomIn 1s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0%);
+    }
+    to {
+        opacity: 1;
+        transform: scale(100%);
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes floating {
+    0% { transform: translateY(0); }
+    50%  { transform: translateY(-5px); }
+    100%   { transform: translateY(0); }
+}
+
+@keyframes stretchX {
+    0% { transform: scaleX(1); }
+    50% { transform: scaleX(1.1); }
+    100% { transform: scaleX(1); }
+}
+
+@keyframes stretchY {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(1.1); }
+    100% { transform: scaleY(1); }
+}

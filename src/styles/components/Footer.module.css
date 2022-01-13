@@ -1,0 +1,35 @@
+.footer {
+    width: 100vw;
+    height: 100px;
+    background: #202020;
+    color: white;
+    text-align: center;
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.footer > div > a > svg {
+    font-size: 2.5rem;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icons > a {
+    display: flex;
+    align-items: center;
+    transition: ease-in-out 0.5s;
+}
+
+.icons > a:hover {
+    transform: scale(1.1);
+    transition: ease-in-out 0.5s;
+}

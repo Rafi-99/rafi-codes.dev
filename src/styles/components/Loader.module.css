@@ -1,0 +1,30 @@
+.outer_loader {
+    margin: auto;
+    width: 5rem;
+    height: 5rem;
+    border: 5px solid darkblue;
+    border-top-color: lightskyblue;
+    border-bottom-color: lightskyblue;
+    border-radius: 50%;
+    animation: forward_spin 1s linear infinite;
+}
+
+.inner_loader {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 5px solid darkblue;
+    border-top-color: lightskyblue;
+    border-bottom-color: lightskyblue;
+    animation: reverse_spin .5s linear infinite;
+}
+
+@keyframes forward_spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes reverse_spin {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}

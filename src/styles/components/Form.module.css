@@ -1,0 +1,73 @@
+.form_container {
+    animation: fadeIn 1s ease-out, zoomUp 1s ease-out;
+    transform-origin: top;
+    background: gainsboro;
+    color: white;
+    border-radius: 5px;
+    width: clamp(30vw, 300px, 100vw);
+    margin: 32px auto;
+    padding: 2rem;
+    text-align: left;
+    position: relative;
+    z-index: 1;
+}
+
+.form_container > form > input,
+.form_container > form > textarea,
+.form_container > form > button[ type='submit' ] {
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    resize: none;
+    padding: 15px 15px;
+    margin: 15px 0;
+    background: whitesmoke;
+}
+
+.form_container > form > input:focus,
+.form_container > form > textarea:focus {
+    outline: none;
+    filter: drop-shadow(0 0 5px royalblue);
+    transition: ease-in-out 0.5s;
+}
+
+.form_container > form > input, .form_container > form > textarea {
+    transition: ease-in-out 0.5s;
+}
+
+.form_container > form > button[type='submit'] {
+    font-family: inherit;
+    color: black;
+}
+
+.form_container > form > button[type='submit'].success_message {
+    background: lightgreen;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+.form_container > form > label {
+    color: black;
+}
+
+.title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    color: black;
+}
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity:  0; }
+}
+
+@keyframes zoomUp {
+    from { transform: scale(0%) translateY(100%); }
+    to { transform: scale(100%) translateY(0%); }
+}

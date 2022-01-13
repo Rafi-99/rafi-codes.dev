@@ -1,0 +1,20 @@
+.text {
+    color: royalblue;
+}
+
+.text_type {
+    text-align: center;
+}
+
+.text_type .text {
+    border-right: 1px solid white;
+    animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+    0% { border-color: white; }
+    49% { border-color: white; }
+    50% { border-color: transparent; }
+    99% { border-color: transparent; }
+    100% { border-color: white; }
+}
