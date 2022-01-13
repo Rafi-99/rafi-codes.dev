@@ -27,7 +27,7 @@ export default function Projects() {
                 </div>
                 <div>
                     <Image src='/assets/images/nextjs.png' width={3840} height={2160} alt='Project Thumbnail: Rafi Codes | Portfolio' />
-                    <h1>Rafi Codes&nbsp;<Link href="https://www.github.com/Rafi-99/Portfolio-Website"><a rel="noopener noreferrer" target="_blank" aria-label="Link to Rafi's GitHub Project | Portfolio"><SiGithub /></a></Link></h1>
+                    <h1>Rafi Codes&nbsp;<Link href="https://www.github.com/Rafi-99/rafi-codes.dev"><a rel="noopener noreferrer" target="_blank" aria-label="Link to Rafi's GitHub Project | Portfolio"><SiGithub /></a></Link></h1>
                     <p>The website you&apos;re on right now is a full-stack progressive web app built using the Next.js React framework. My site utilizes a MongoDB database for data retrieval. My custom domain is provided through Google Domains and the site is currently being hosted on Vercel. Current plans include implementing more SEO and perfomance optimizations and learning Three.js.</p>
                     <div className={styles.tools}><SiNextdotjs /><SiMongodb /><SiGoogledomains /></div>
                 </div>
