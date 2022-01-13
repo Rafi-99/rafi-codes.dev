@@ -11,12 +11,12 @@ class MyDocument extends Document {
             <Html lang='en'>
                 <Head>
                     <link rel='manifest' href='/manifest.json' />
-                    <link rel='apple-touch-icon' sizes='180x180' href='/assets/icons/apple-touch-icon.png' />
+                    <link rel='apple-touch-icon' sizes='180x180' href='/assets/favicons/apple-touch-icon.png' />
                     <link rel='icon' type='image/png' href='/assets/favicons/Terminal.png' />
-                    <link rel='icon' type='image/png' sizes='32x32' href='/assets/icons/favicon-32x32.png' />
-                    <link rel='icon' type='image/png' sizes='16x16' href='/assets/icons/favicon-16x16.png' />
-                    <link rel='mask-icon' href='/assets/icons/safari-pinned-tab.svg' color='#080e2a' />
-                    <link rel='shortcut icon' href='/assets/icons/favicon.ico' />
+                    <link rel='icon' type='image/png' sizes='32x32' href='/assets/favicons/favicon-32x32.png' />
+                    <link rel='icon' type='image/png' sizes='16x16' href='/assets/favicons/favicon-16x16.png' />
+                    <link rel='mask-icon' href='/assets/favicons/safari-pinned-tab.svg' color='#080e2a' />
+                    <link rel='shortcut icon' href='/assets/favicons/favicon.ico' />
                     <meta charSet='UTF-8' />
                     <meta httpEquiv='X-UA-Compatible' content='IE=edge' />
                     <meta name='msapplication-TileColor' content='#080e2a' />
