@@ -23,8 +23,8 @@ export default async function handler(req, res) {
         try {
             await transporter
                 .sendMail({
-                    from: 'rafi.md.2018@gmail.com',
-                    to: 'rafi.md.2018@gmail.com',
+                    from: 'contact@rafi-codes.dev',
+                    to: 'contact@rafi-codes.dev',
                     subject: 'Portfolio Contact Form Response',
                     text: `${req.body.message}\n\n--\nName: ${req.body.name}\nEmail: ${req.body.email}`
                 })

@@ -7,7 +7,7 @@ import styles from '../styles/pages/index.module.css';
 export default function Home() {
     return (
         <>
-            <main className={styles.content}>
+            <div className={styles.content}>
                 <h1>👋🏾 Hello There!</h1>
                 <div className={styles.profile}>
                     <Image src='/assets/images/profile.png' width={250} height={250} layout='intrinsic' alt='A picture of Rafi.' className={styles.picture} quality='100' priority />
@@ -21,7 +21,7 @@ export default function Home() {
                     <Link href='/projects'><a><button>My Projects</button></a></Link>
                     <Link href='/contact'><a><button>Contact Me</button></a></Link>
                 </div>
-            </main>
+            </div>
         </>
     );
 };
