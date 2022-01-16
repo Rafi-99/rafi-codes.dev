@@ -3,7 +3,7 @@
     text-align: center;
     margin: 32px auto;
     padding: 0 2rem;
-    animation: zoomIn 1s;
+    animation: zoomIn 1s ease-in-out;
 }
 
 .picture {
@@ -11,10 +11,10 @@
     object-fit: cover;
 }
 
-.titles{
+.titles {
     text-align: center;
     color: white;
-    animation: zoomIn 1s;
+    animation: zoomIn 1s ease-in-out;
 }
 
 .button {
@@ -29,7 +29,6 @@
     background: transparent;
     font: inherit;
     padding: 0.25rem 1rem;
-
 }
 
 .button:hover {
@@ -40,7 +39,7 @@
 .jobs {
     display: grid;
     gap: 2rem;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 720px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 700px));
     justify-content: center;
     padding: 0 2rem;
 }
@@ -71,6 +70,14 @@
     text-align: center;
 }
 
+.skills > div {
+    animation: zoomIn 1s ease-in-out;
+}
+
+.skills > div > p:first-of-type {
+    color: royalblue;
+}
+
 .skills > div > svg {
     font-size: 3rem;
     fill: royalblue;
@@ -93,14 +100,6 @@
     animation: floating 1s linear infinite;
 }
 
-.skills > div > p:first-of-type {
-    color: royalblue;
-}
-
-.skills > div {
-    animation: zoomIn 1s ease-in-out;
-}
-
 @keyframes zoomIn {
     from {
         opacity: 0;
@@ -112,15 +111,15 @@
     }
 }
 
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
 @keyframes floating {
     0% { transform: translateY(0); }
     50%  { transform: translateY(-5px); }
     100%   { transform: translateY(0); }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
 
 @keyframes stretchX {
