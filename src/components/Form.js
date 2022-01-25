@@ -23,6 +23,7 @@ export default function ContactForm() {
 
     const handleSubmit = async event => {
         event.preventDefault();
+        setInputs({});
 
         const serverReponse = await fetch('/api/contact', {
             method: 'POST',
@@ -30,7 +31,6 @@ export default function ContactForm() {
             body: JSON.stringify(inputs)
         });
 
-        setInputs({});
         serverReponse.status === 200 ? displayAlert('success') : displayAlert('failure');
     };
 
