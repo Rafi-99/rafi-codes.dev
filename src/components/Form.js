@@ -6,11 +6,11 @@ export default function ContactForm() {
     const alert = useRef(null);
     const [ inputs, setInputs ] = useState({});
 
-    const displayAlert = () => {
-        alert.current.classList.add(styles.success_message);
-        alert.current.textContent = '🎉 Hooray! Your message has been sent!';
+    const displayAlert = (status) => {
+        status === 'success' ? alert.current.classList.add(styles.success_message) : alert.current.classList.add(styles.error_message);
+        status === 'success' ? alert.current.textContent = '🎉 Hooray! Your message has been sent!' : alert.current.textContent = '😭 Sorry! There was an error. Please try again.';
         setTimeout(() => {
-            alert.current.classList.remove(styles.success_message);
+            alert.current.classList.contains(styles.success_message) ? alert.current.classList.remove(styles.success_message) : alert.current.classList.remove(styles.error_message);
             alert.current.textContent = '✅ Send Message';
         }, 3000);
     };
@@ -21,21 +21,17 @@ export default function ContactForm() {
         setInputs(values => ({...values, [key]: value}));
     };
 
-    const handleSubmit = event => {
+    const handleSubmit = async event => {
         event.preventDefault();
-        setInputs({});
 
-        fetch('/api/contact', {
+        const serverReponse = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(inputs)
-        }).then(response => {
-            response.status === 200 ? console.log('Success! Form data has been sent to the API.') : console.log('Error! Failed to post data to the API.');
-        }).catch(error => {
-            console.log(error);
         });
 
-        displayAlert();
+        setInputs({});
+        serverReponse.status === 200 ? displayAlert('success') : displayAlert('failure');
     };
 
     return (

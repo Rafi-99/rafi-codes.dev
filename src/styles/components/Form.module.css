@@ -45,6 +45,11 @@
     animation: fadein 0.5s, fadeout 0.5s 2.5s;
 }
 
+.form_container > form > button[type='submit'].error_message {
+    background: lightcoral;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
 .form_container > form > label {
     color: black;
 }
