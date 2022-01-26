@@ -43,6 +43,10 @@ a {
     min-height: inherit;
 }
 
+.grecaptcha-badge {
+    visibility: hidden;
+}
+
 .overlay {
     overflow: hidden;
     height: 100vh;

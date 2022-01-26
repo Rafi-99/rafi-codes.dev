@@ -6,13 +6,19 @@ const client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_
 client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
 export default async function handler(req, res) {
-    if (req.method === 'POST') {
+    const validRequest = () => {
+        const { name, email, message, token } = req.body;
+        const badInput = null || undefined || '';
+        return name !== badInput && email !== badInput && message !== badInput && token !== badInput ? true : false;
+    };
+
+    if (req.method === 'POST' && validRequest()) {
         const accessToken = await client.getAccessToken();
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
-                user: 'rafi.md.2018@gmail.com',
+                user: process.env.USER,
                 clientId: process.env.CLIENT_ID,
                 clientSecret: process.env.CLIENT_SECRET,
                 refreshToken: process.env.REFRESH_TOKEN,
@@ -20,28 +26,35 @@ export default async function handler(req, res) {
             }
         });
 
+        const validateToken = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({ secret: process.env.RECAPTCHA_SECRET_KEY, response: req.body.token })
+        });
+
+        const { success, score } = await validateToken.json();
+
         try {
-            await transporter
-                .sendMail({
-                    from: 'contact@rafi-codes.dev',
+            if (success && score > 0.5) {
+                await transporter.sendMail({
+                    from: req.body.email,
                     to: 'contact@rafi-codes.dev',
-                    subject: 'Portfolio Contact Form Response',
+                    subject: 'Contact Form Response | Rafi Codes',
                     text: `${req.body.message}\n\n--\nName: ${req.body.name}\nEmail: ${req.body.email}`
-                })
-                .then((result) => {
+                }).then((result) => {
                     res.status(200).json(req.body);
                     console.log(result);
-                })
-                .catch((error) => {
-                    console.error(error);
-                    res.status(500).json(error);
                 });
+            }
+            else {
+                res.status(500).json({ error: 'Invalid Token' });
+            }
         }
         catch (error) {
-            return error;
+            res.status(500).json({ error });
         }
     }
     else {
-        res.status(405).json({ error: 'Method not allowed' });
+        res.status(405).json({ error: 'Please try again with a valid POST request.' });
     }
 };

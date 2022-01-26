@@ -1,3 +1,4 @@
+import Script from 'next/script';
 import { useRef, useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 import styles from '../styles/components/Form.module.css';
@@ -26,10 +27,13 @@ export default function ContactForm() {
         setInputs({});
         displayAlert('sending');
 
+        const recaptchaToken = await grecaptcha.execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: 'submit' });
+        grecaptcha.reset(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
+
         const serverReponse = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(inputs)
+            body: JSON.stringify(Object.assign(inputs, { token: recaptchaToken }))
         });
 
         serverReponse.ok ? displayAlert('success') : displayAlert('failure');
@@ -51,6 +55,7 @@ export default function ContactForm() {
                     <textarea rows='5' form='email-form' aria-label='Message' id='message' name='message' value={inputs.message || ''} onChange={handleChange} required />
 
                     <button ref={alert} type='submit' aria-label='Send Message'>✅ Send Message</button>
+                    <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} strategy='beforeInteractive' async defer />
                 </form>
             </div>
         </>
