@@ -35,9 +35,13 @@
     transition: ease-in-out 0.5s;
 }
 
-.form_container > form > button[type='submit'] {
+.form_container > form > button[type='submit'], .form_container > form > small {
     font-family: inherit;
     color: black;
+}
+
+.form_container > form > small a {
+    color: royalblue;
 }
 
 .form_container > form > button[type='submit'].success_message {

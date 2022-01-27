@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import Script from 'next/script';
 import { useRef, useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
@@ -56,6 +57,7 @@ export default function ContactForm() {
 
                     <button ref={alert} type='submit' aria-label='Send Message'>✅ Send Message</button>
                     <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} strategy='beforeInteractive' async defer />
+                    <small>This site is protected by reCAPTCHA and the Google <Link href="https://policies.google.com/privacy"><a rel='noopener noreferrer' target='_blank' aria-label='Google Privacy Policy'>Privacy Policy</a></Link> and <Link href="https://policies.google.com/terms"><a rel='noopener noreferrer' target='_blank' aria-label='Google Terms of Service'>Terms of Service</a></Link> apply.</small>
                 </form>
             </div>
         </>
