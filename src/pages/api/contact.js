@@ -13,7 +13,6 @@ export default async function handler(req, res) {
     };
 
     if (req.method === 'POST' && validRequest()) {
-        const accessToken = await client.getAccessToken();
         const transporter = nodemailer.createTransport({
             service: 'gmail',
             auth: {
@@ -22,7 +21,7 @@ export default async function handler(req, res) {
                 clientId: process.env.CLIENT_ID,
                 clientSecret: process.env.CLIENT_SECRET,
                 refreshToken: process.env.REFRESH_TOKEN,
-                accessToken: accessToken
+                accessToken: await client.getAccessToken()
             }
         });
 
@@ -42,8 +41,7 @@ export default async function handler(req, res) {
                     subject: 'Contact Form Response | Rafi Codes',
                     text: `${req.body.message}\n\n--\nName: ${req.body.name}\nEmail: ${req.body.email}`
                 }).then((result) => {
-                    res.status(200).json(req.body);
-                    console.log(result);
+                    res.status(200).json({ success: result });
                 });
             }
             else {
