@@ -1,5 +1,5 @@
 import { google } from 'googleapis';
-import nodemailer from 'nodemailer';
+import { createTransport } from 'nodemailer';
 
 const client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_SECRET, process.env.REDIRECT_URI);
 
@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     };
 
     if (req.method === 'POST' && validRequest()) {
-        const transporter = nodemailer.createTransport({
+        const transporter = createTransport({
             service: 'gmail',
             auth: {
                 type: 'OAuth2',
