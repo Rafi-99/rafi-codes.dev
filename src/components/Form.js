@@ -56,8 +56,8 @@ export default function ContactForm() {
                     <textarea rows='5' form='email-form' aria-label='Message' id='message' name='message' value={inputs.message || ''} onChange={handleChange} required />
 
                     <button ref={alert} type='submit' aria-label='Send Message'>✅ Send Message</button>
-                    <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} strategy='beforeInteractive' async defer />
-                    <small>This site is protected by reCAPTCHA and the Google <Link href="https://policies.google.com/privacy"><a rel='noopener noreferrer' target='_blank' aria-label='Google Privacy Policy'>Privacy Policy</a></Link> and <Link href="https://policies.google.com/terms"><a rel='noopener noreferrer' target='_blank' aria-label='Google Terms of Service'>Terms of Service</a></Link> apply.</small>
+                    <Script src={`https://www.google.com/recaptcha/api.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} async defer />
+                    <small>This site is protected by reCAPTCHA and the Google <Link href="https://policies.google.com/privacy" rel='noopener noreferrer' target='_blank' aria-label='Google Privacy Policy'>Privacy Policy</Link> and <Link href="https://policies.google.com/terms" rel='noopener noreferrer' target='_blank' aria-label='Google Terms of Service'>Terms of Service</Link> apply.</small>
                 </form>
             </div>
         </>

@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { MdPerson, MdCode, MdInbox, MdHome, MdClear, MdMenu } from 'react-icons/md';
@@ -20,19 +20,19 @@ export default function Navigation() {
 
     return (
         <nav className={styles.nav}>
-            <Link href='/'><a className={styles.brand}><Image src='/assets/favicons/Terminal.png' width={40} height={40} alt='Website Logo' priority />&nbsp;Rafi Codes</a></Link>
+            <Link href='/' className={styles.brand}><Image src='/assets/favicons/Terminal.png' width={40} height={40} alt='Website Logo' priority />&nbsp;Rafi Codes</Link>
 
             <div className={styles.burger} onClick={handleMobileMenuToggle}>
                 {clicked ? <MdClear fontSize='2rem' /> : <MdMenu fontSize='2rem' />}
             </div>
 
             <ul className={clicked ? styles.open : styles.closed}>
-                <li><Link href='/about'><a onClick={handleMobileMenuToggle}><MdPerson />&nbsp;About Me</a></Link></li>
-                <li><Link href='/projects'><a onClick={handleMobileMenuToggle}><MdCode />&nbsp;My Projects</a></Link></li>
-                <li><Link href='/contact'><a onClick={handleMobileMenuToggle}><MdInbox />&nbsp;Contact Me</a></Link></li>
+                <li><Link href='/about' onClick={handleMobileMenuToggle}><MdPerson />&nbsp;About Me</Link></li>
+                <li><Link href='/projects' onClick={handleMobileMenuToggle}><MdCode />&nbsp;My Projects</Link></li>
+                <li><Link href='/contact' onClick={handleMobileMenuToggle}><MdInbox />&nbsp;Contact Me</Link></li>
             </ul>
 
-            <Link href='/'><a className={styles.home}><MdHome fontSize='1rem' />&nbsp;Home</a></Link>
+            <Link href='/' className={styles.home}><MdHome fontSize='1rem' />&nbsp;Home</Link>
         </nav>
     );
 };

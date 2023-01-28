@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import DateTime from '../components/DateTime';
 import TypeWriter from '../components/TypeWriter';
@@ -17,9 +17,9 @@ export default function Home() {
                 <DateTime />
 
                 <div className={styles.links}>
-                    <Link href='/about'><a><button>About Me</button></a></Link>
-                    <Link href='/projects'><a><button>My Projects</button></a></Link>
-                    <Link href='/contact'><a><button>Contact Me</button></a></Link>
+                    <Link href='/about'><button>About Me</button></Link>
+                    <Link href='/projects'><button>My Projects</button></Link>
+                    <Link href='/contact'><button>Contact Me</button></Link>
                 </div>
             </div>
         </>

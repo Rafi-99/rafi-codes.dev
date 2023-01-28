@@ -1,4 +1,4 @@
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 import { FaLaptopCode, FaReact, FaAws, FaDatabase, FaDownload } from 'react-icons/fa';
 import FadeInSection from '../components/FadeInSection';
@@ -45,7 +45,7 @@ export default function About({ skills, jobs, icons }) {
             <h1 className={styles.titles}>My Interests</h1>
             <p style={{ textAlign: 'center', padding: '0 2rem' }}>Software Engineering, Web Development, Fitness, Reading, and Spicy Food</p>
             <button className={styles.button}>
-                <Link href='/assets/pdf/Md_Rafi_Résumé.pdf'><a target='_blank'><FaDownload />&nbsp;Download Résumé</a></Link>
+                <Link href='/assets/pdf/Md_Rafi_Résumé.pdf' target='_blank'><FaDownload />&nbsp;Download Résumé</Link>
             </button>
         </>
     );

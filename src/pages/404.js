@@ -11,7 +11,7 @@ export default function Custom404() {
             <h1 className={styles.text}>404 | Not Found</h1>
             <p className={styles.text}>It looks like the page you are looking for does not exist.</p>
             <p className={styles.text}>Let&apos;s get you back home.</p>
-            <Link href='/'><a className={styles.text}><MdHome fontSize='2rem' className={styles.home} /></a></Link>
+            <Link href='/' className={styles.text}><MdHome fontSize='2rem' className={styles.home} /></Link>
 
             <div className={styles.shapes}>
                 <Canvas>

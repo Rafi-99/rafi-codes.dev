@@ -11,7 +11,7 @@ export default function Custom500() {
             <h1 className={styles.text}>500 | Internal Server Error</h1>
             <p className={styles.text}>Sorry for the inconvenience. This was caused by an issue on our end, not you.</p>
             <p className={styles.text}>Let&apos;s get you back home.</p>
-            <Link href='/'><a className={styles.text}><MdHome fontSize='2rem' className={styles.home} /></a></Link>
+            <Link href='/' className={styles.text}><MdHome fontSize='2rem' className={styles.home} /></Link>
 
             <div className={styles.shapes}>
                 <Canvas>
