@@ -10,6 +10,7 @@
     "dependencies": {
         "@react-three/drei": "^8.4.0",
         "@react-three/fiber": "^7.0.24",
+        "@vercel/analytics": "^0.1.8",
         "framer-motion": "^6.2.3",
         "googleapis": "^92.0.0",
         "mongodb": "^4.11.0",

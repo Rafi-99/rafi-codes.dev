@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import Layout from '../components/Layout';
 import Loader from '../components/Loader';
+import { Analytics } from '@vercel/analytics/react';
 import '../styles/global/globals.css';
 
 export default function App({ Component, pageProps }) {
@@ -38,6 +39,7 @@ export default function App({ Component, pageProps }) {
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, minHeight: 'inherit', display: 'flex', flexDirection: 'column' }} transition={{ duration: 1 }} exit={{ opacity: 0 }}>
                         <Layout>
                             <Component {...pageProps} />
+                            <Analytics />
                         </Layout>
                     </motion.div>
 
