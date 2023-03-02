@@ -39,12 +39,12 @@ export default function App({ Component, pageProps }) {
                     <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, minHeight: 'inherit', display: 'flex', flexDirection: 'column' }} transition={{ duration: 1 }} exit={{ opacity: 0 }}>
                         <Layout>
                             <Component {...pageProps} />
-                            <Analytics />
                         </Layout>
                     </motion.div>
 
                 )}
             </AnimatePresence>
+            <Analytics />
         </>
     );
 };
