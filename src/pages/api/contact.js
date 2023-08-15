@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     const validRequest = () => {
         const { name, email, message, token } = req.body;
         const badInput = null || undefined || '';
-        return name !== badInput && email !== badInput && message !== badInput && token !== badInput ? true : false;
+        return name !== badInput && email !== badInput && message !== badInput && token !== badInput;
     };
 
     if (req.method === 'POST' && validRequest()) {
