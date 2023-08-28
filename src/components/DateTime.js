@@ -4,6 +4,6 @@ export default function DateTime() {
     const [ currentDate, currentTime ] = useDateTime();
 
     return (
-        <p>{currentDate} | {currentTime}</p>
+        <p suppressHydrationWarning>{currentDate} | {currentTime} </p>
     );
 };
