@@ -5,14 +5,15 @@ const client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_
 
 client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
-export default async function handler(req, res) {
-    const validRequest = () => {
-        const { name, email, message, token } = req.body;
-        const badInput = null || undefined || '';
-        return name !== badInput && email !== badInput && message !== badInput && token !== badInput;
+export default async function handler(request, response) {
+    const { name, email, message, token } = request.body;
+
+    const isValidRequest = () => {
+        const invalidInput = (input) => input === null || input === undefined || input === '';
+        return !invalidInput(name) && !invalidInput(email) && !invalidInput(message) && !invalidInput(token);
     };
 
-    if (req.method === 'POST' && validRequest()) {
+    if (request.method === 'POST' && isValidRequest()) {
         const transporter = createTransport({
             service: 'gmail',
             auth: {
@@ -25,34 +26,41 @@ export default async function handler(req, res) {
             }
         });
 
-        const validateToken = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        const tokenValidator = await fetch('https://www.google.com/recaptcha/api/siteverify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ secret: process.env.RECAPTCHA_SECRET_KEY, response: req.body.token })
+            body: new URLSearchParams({ secret: process.env.RECAPTCHA_SECRET_KEY, response: token })
         });
 
-        const { success, score } = await validateToken.json();
+        const { success, score } = await tokenValidator.json();
 
         try {
             if (success && score > 0.5) {
                 await transporter.sendMail({
-                    from: req.body.email,
+                    from: email,
                     to: 'contact@rafi-codes.dev',
                     subject: 'Contact Form Response | Rafi Codes',
-                    text: `${req.body.message}\n\n--\nName: ${req.body.name}\nEmail: ${req.body.email}`
+                    text: `${message}\n⸻\nName: ${name}\nEmail: ${email}`
                 }).then((result) => {
-                    res.status(200).json({ success: result });
+                    response.status(200).json({ success: result });
                 });
             }
+
             else {
-                res.status(500).json({ error: 'Invalid Token' });
+                response.status(500).json({ error: 'Invalid Token' });
             }
         }
+
         catch (error) {
-            res.status(500).json({ error });
+            response.status(500).json({ error });
         }
     }
+
+    else if (request.method !== 'POST') {
+        response.status(405).json({ error: `Method ${request.method} is not allowed.` });
+    }
+
     else {
-        res.status(405).json({ error: 'Please try again with a valid POST request.' });
+        response.status(400).json({ error: 'Please try again with a valid POST request.' });
     }
 };
