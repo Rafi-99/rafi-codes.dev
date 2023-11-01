@@ -46,13 +46,13 @@ export default function ContactForm() {
                 <h1 className={styles.title}><FaPaperPlane />&nbsp;Let&apos;s Get In Touch!</h1>
 
                 <form action='/api/contact' method='POST' id='email-form' onSubmit={handleSubmit}>
-                    <label htmlFor='Name'>Name</label>
-                    <input type='text' aria-label='Name' id='name' name='name' value={inputs.name || ''} onChange={handleChange} required />
+                    <label htmlFor='name'>Name</label>
+                    <input type='text' aria-label='Name' id='name' name='name' value={inputs.name || ''} onChange={handleChange} required autoComplete='off' />
 
-                    <label htmlFor='Email'>Email</label>
-                    <input type='Email' aria-label='Email' id='email' name='email' value={inputs.email || ''} onChange={handleChange} required />
+                    <label htmlFor='email'>Email</label>
+                    <input type='Email' aria-label='Email' id='email' name='email' value={inputs.email || ''} onChange={handleChange} required autoComplete='off' />
 
-                    <label htmlFor='Message'>Message</label>
+                    <label htmlFor='message'>Message</label>
                     <textarea rows='5' form='email-form' aria-label='Message' id='message' name='message' value={inputs.message || ''} onChange={handleChange} required />
 
                     <button ref={alert} type='submit' aria-label='Send Message'>✅ Send Message</button>
