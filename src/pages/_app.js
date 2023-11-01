@@ -32,7 +32,7 @@ export default function App({ Component, pageProps }) {
 
     return (
         <>
-            <AnimatePresence exitBeforeEnter>
+            <AnimatePresence wait>
                 {loading ?
                     <Loader />
                 : (
