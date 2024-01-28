@@ -4,6 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import Layout from '../components/Layout';
 import Loader from '../components/Loader';
 import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import '../styles/global/globals.css';
 
 export default function App({ Component, pageProps }) {
@@ -45,6 +46,7 @@ export default function App({ Component, pageProps }) {
                 )}
             </AnimatePresence>
             <Analytics />
+            <SpeedInsights />
         </>
     );
 };
