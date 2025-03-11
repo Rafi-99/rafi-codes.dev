@@ -26,16 +26,22 @@ export default async function handler(request, response) {
             }
         });
 
-        const tokenValidator = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        const tokenValidator = await fetch(`https://recaptchaenterprise.googleapis.com/v1/projects/${process.env.RECAPTCHA_PROJECT_ID}/assessments?key=${process.env.RECAPTCHA_API_KEY}`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: new URLSearchParams({ secret: process.env.RECAPTCHA_SECRET_KEY, response: token })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                event: {
+                    token: token,
+                    siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+                    expectedAction: 'submit'
+                }
+            })
         });
 
-        const { success, score } = await tokenValidator.json();
+        const { tokenProperties, riskAnalysis } = await tokenValidator.json();
 
         try {
-            if (success && score > 0.5) {
+            if (tokenProperties.valid && riskAnalysis.score > 0.5) {
                 await transporter.sendMail({
                     from: email,
                     to: 'contact@rafi-codes.dev',
