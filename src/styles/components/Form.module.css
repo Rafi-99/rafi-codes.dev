@@ -46,16 +46,16 @@
 
 .form_container > form > button[type='submit'].success_message {
     background: lightgreen;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    transition: background 1s ease-in-out, color 1s ease-in-out;
 }
 
 .form_container > form > button[type='submit'].error_message {
     background: lightcoral;
-    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    transition: background 1s ease-in-out, color 1s ease-in-out;
 }
 
 .form_container > form > button[type='submit'] {
-    transition : ease-in-out 0.5s;
+    transition: background 1s ease-in-out, color 1s ease-in-out;
 }
 
 .form_container > form > label {
@@ -77,7 +77,7 @@
 
 @keyframes fadeout {
     from { opacity: 1; }
-    to { opacity:  0; }
+    to { opacity: 0; }
 }
 
 @keyframes zoomUp {

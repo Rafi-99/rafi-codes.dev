@@ -9,12 +9,25 @@ export default function ContactForm() {
     const [ inputs, setInputs ] = useState({});
 
     const displayAlert = (status) => {
-        status === 'success' ? alert.current.classList.add(styles.success_message) : status === 'sending' ? alert.current.classList.add(null) : alert.current.classList.add(styles.error_message);
-        status === 'success' ? alert.current.textContent = '🎉 Hooray! Your message has been sent!' : status === 'sending' ? alert.current.textContent = '⏳ Sending...' : alert.current.textContent = '😭 Sorry! There was an error. Please try again.';
-        setTimeout(() => {
-            alert.current.classList.contains(styles.success_message) ? alert.current.classList.remove(styles.success_message) : alert.current.classList.remove(styles.error_message);
-            alert.current.textContent = '✅ Send Message';
-        }, 3000);
+        if (status === 'sending') {
+            alert.current.classList.remove(styles.success_message, styles.error_message);
+            alert.current.textContent = '⏳ Sending...';
+        }
+        else if (status === 'success') {
+            alert.current.classList.add(styles.success_message);
+            alert.current.textContent = '🎉 Hooray! Your message has been sent!';
+        }
+        else {
+            alert.current.classList.add(styles.error_message);
+            alert.current.textContent = '😭 Sorry! There was an error. Please try again.';
+        }
+
+        if (status !== 'sending') {
+            setTimeout(() => {
+                alert.current.classList.remove(styles.success_message, styles.error_message);
+                alert.current.textContent = '✅ Send Message';
+            }, 3000);
+        }
     };
 
     const handleChange = event => {
@@ -25,19 +38,24 @@ export default function ContactForm() {
 
     const handleSubmit = async event => {
         event.preventDefault();
-        setInputs({});
         displayAlert('sending');
 
         const recaptchaToken = await grecaptcha.enterprise.execute(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY, { action: 'submit' });
         grecaptcha.enterprise.reset(process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY);
 
-        const serverReponse = await fetch('/api/contact', {
+        const serverResponse = await fetch('/api/contact', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(Object.assign(inputs, { token: recaptchaToken }))
         });
 
-        serverReponse.ok ? displayAlert('success') : displayAlert('failure');
+        if (serverResponse.ok) {
+            setInputs({});
+            displayAlert('success');
+        }
+        else {
+            displayAlert('failure');
+        }
     };
 
     return (
