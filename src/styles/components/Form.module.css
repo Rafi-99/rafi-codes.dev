@@ -22,6 +22,7 @@
     padding: 15px 15px;
     margin: 15px 0;
     background: whitesmoke;
+    font-size: 16px;
 }
 
 .form_container > form > input:focus,
