@@ -13,16 +13,18 @@ export default function ContactForm() {
             alert.current.classList.remove(styles.success_message, styles.error_message);
             alert.current.textContent = '⏳ Sending...';
         }
-        else if (status === 'success') {
-            alert.current.classList.add(styles.success_message);
-            alert.current.textContent = '🎉 Hooray! Your message has been sent!';
-        }
-        else {
-            alert.current.classList.add(styles.error_message);
-            alert.current.textContent = '😭 Sorry! There was an error. Please try again.';
-        }
 
-        if (status !== 'sending') {
+        else if (status !== 'sending') {
+            if (status === 'success') {
+                alert.current.classList.add(styles.success_message);
+                alert.current.textContent = '🎉 Hooray! Your message has been sent!';
+            }
+
+            else {
+                alert.current.classList.add(styles.error_message);
+                alert.current.textContent = '😭 Sorry! There was an error. Please try again.';
+            }
+
             setTimeout(() => {
                 alert.current.classList.remove(styles.success_message, styles.error_message);
                 alert.current.textContent = '✅ Send Message';

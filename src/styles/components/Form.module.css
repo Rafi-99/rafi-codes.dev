@@ -47,16 +47,16 @@
 
 .form_container > form > button[type='submit'].success_message {
     background: lightgreen;
-    transition: background 1s ease-in-out, color 1s ease-in-out;
+    transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
 .form_container > form > button[type='submit'].error_message {
     background: lightcoral;
-    transition: background 1s ease-in-out, color 1s ease-in-out;
+    transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
 .form_container > form > button[type='submit'] {
-    transition: background 1s ease-in-out, color 1s ease-in-out;
+    transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
 .form_container > form > label {
