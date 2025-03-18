@@ -1,6 +1,7 @@
 import Image from 'next/legacy/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { usePreventScroll } from '@react-aria/overlays';
 import { MdPerson, MdCode, MdInbox, MdHome, MdClear, MdMenu } from 'react-icons/md';
 import styles from '../styles/components/Navigation.module.css';
 
@@ -8,15 +9,7 @@ export default function Navigation() {
     const [ clicked, setClicked ] = useState(false);
     const handleMobileMenuToggle = () => setClicked(!clicked);
 
-    useEffect(() => {
-        if (clicked) {
-            document.body.classList.add('overlay');
-        }
-
-        return () => {
-            document.body.classList.remove('overlay');
-        };
-    }, [ clicked ]);
+    usePreventScroll(clicked);
 
     return (
         <nav className={styles.nav}>
