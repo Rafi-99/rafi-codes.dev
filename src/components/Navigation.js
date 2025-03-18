@@ -9,7 +9,7 @@ export default function Navigation() {
     const [ clicked, setClicked ] = useState(false);
     const handleMobileMenuToggle = () => setClicked(!clicked);
 
-    usePreventScroll(clicked);
+    usePreventScroll({ isDisabled: !clicked });
 
     return (
         <nav className={styles.nav}>
