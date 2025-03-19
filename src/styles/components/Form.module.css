@@ -4,84 +4,112 @@
     background: gainsboro;
     color: white;
     border-radius: 5px;
-    width: clamp(30vw, 300px, 100vw);
-    margin: 32px auto;
-    padding: 2rem;
+    width: clamp(300px, 50%, 600px); /* Adjust width for better responsiveness */
+    height: auto; /* Allow height to adjust based on content */
+    margin: clamp(16px, 5%, 32px) auto;
+    padding: clamp(1.5rem, 3vw, 2.5rem); /* Add padding to create space around the edges */
     text-align: left;
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(0.5rem, 1vw, 1.5rem); /* Add spacing between elements */
 }
 
-.form_container > form > input,
-.form_container > form > textarea,
-.form_container > form > button[ type='submit' ] {
+.form_container form > input,
+.form_container form > textarea,
+.form_container form > button[type='submit'] {
     width: 100%;
     border: none;
     border-radius: 5px;
     resize: none;
-    padding: 15px 15px;
-    margin: 15px 0;
+    padding: clamp(12px, 2vw, 18px); /* Increased padding for better touch targets */
+    margin: clamp(0.5rem, 1vw, 1rem) 0; /* Add margin to create spacing between elements */
     background: whitesmoke;
-    font-size: 16px;
+    font-size: clamp(1rem, 2vw, 1.2rem); /* Adjust font size for smaller screens */
+    font-weight: normal; /* Explicitly set font weight to normal */
 }
 
-.form_container > form > input:focus,
-.form_container > form > textarea:focus {
+.form_container form > input:focus,
+.form_container form > textarea:focus {
     outline: none;
     filter: drop-shadow(0 0 5px royalblue);
     transition: ease-in-out 0.5s;
 }
 
-.form_container > form > input, .form_container > form > textarea {
+.form_container form > input,
+.form_container form > textarea {
     transition: ease-in-out 0.5s;
 }
 
-.form_container > form > button[type='submit'], .form_container > form > small {
+.form_container form > button[type='submit'],
+.form_container form > small {
     font-family: inherit;
     color: black;
 }
 
-.form_container > form > small a {
-    color: royalblue;
+.form_container form > small {
+    font-size: 0.8rem; /* Set a fixed font size for small element */
 }
 
-.form_container > form > button[type='submit'].success_message {
+.form_container form > small a {
+    color: royalblue;
+    font-size: inherit; /* Inherit font size from small element */
+}
+
+.form_container form > button[type='submit'].success_message {
     background: lightgreen;
     transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
-.form_container > form > button[type='submit'].error_message {
+.form_container form > button[type='submit'].error_message {
     background: lightcoral;
     transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
-.form_container > form > button[type='submit'] {
+.form_container form > button[type='submit'] {
     transition: background 1.5s ease-in-out, color 1.5s ease-in-out;
 }
 
-.form_container > form > label {
+.form_container form > label {
     color: black;
+    font-size: clamp(0.9rem, 2vw, 1rem); /* Adjust font size for smaller screens */
+    margin-bottom: clamp(0.2rem, 0.5vw, 0.5rem); /* Add margin below labels for spacing */
 }
 
-.title {
+.form_container .title {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    font-size: clamp(1.2rem, 4vw, 2.5rem); /* Adjust title size for smaller screens */
     color: black;
+    text-align: center; /* Center-align the title text */
+    white-space: nowrap; /* Prevent wrapping of title text */
 }
 
 @keyframes fadein {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fadeout {
-    from { opacity: 1; }
-    to { opacity: 0; }
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 @keyframes zoomUp {
-    from { transform: scale(0%) translateY(100%); }
-    to { transform: scale(100%) translateY(0%); }
+    from {
+        transform: scale(0%) translateY(100%);
+    }
+    to {
+        transform: scale(100%) translateY(0%);
+    }
 }
