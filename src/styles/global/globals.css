@@ -10,9 +10,14 @@ html, body {
     font-size: 100%;
     scrollbar-width: thin;
     scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+    scroll-behavior: smooth;
+}
+
+body {
     overflow: overlay;
     overflow-x: hidden;
-    scroll-behavior: smooth;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 h1 {
