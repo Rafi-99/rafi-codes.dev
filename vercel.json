@@ -1,4 +1,9 @@
 {
+    "crons": [{
+        "path": "/api/contact",
+        "schedule": "0/1 * * * *"
+    }],
+
     "github": {
         "silent": true
     }

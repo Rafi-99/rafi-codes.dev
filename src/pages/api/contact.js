@@ -8,8 +8,17 @@ client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 export default async function handler(request, response) {
     const { name, email, message, token } = request.body;
 
+    // Check if request is from Vercel cron
+    const isCronRequest = request.headers.authorization === `Bearer ${process.env.CRON_SECRET}`;
+
     const isValidRequest = () => {
         const invalidInput = (input) => input === null || input === undefined || input === '';
+
+        // For cron requests, token is not required
+        if (isCronRequest) {
+            return !invalidInput(name) && !invalidInput(email) && !invalidInput(message);
+        }
+        // For form submissions, all fields including token are required
         return !invalidInput(name) && !invalidInput(email) && !invalidInput(message) && !invalidInput(token);
     };
 
@@ -26,21 +35,36 @@ export default async function handler(request, response) {
             }
         });
 
-        const tokenValidator = await fetch(`https://recaptchaenterprise.googleapis.com/v1/projects/${process.env.RECAPTCHA_PROJECT_ID}/assessments?key=${process.env.RECAPTCHA_API_KEY}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-                event: {
-                    token: token,
-                    siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
-                    expectedAction: 'submit'
-                }
-            })
-        });
-
-        const { tokenProperties, riskAnalysis } = await tokenValidator.json();
-
         try {
+            // If it's a cron request, skip reCAPTCHA validation
+            if (isCronRequest) {
+                await transporter.sendMail({
+                    from: email,
+                    to: 'contact@rafi-codes.dev',
+                    subject: 'Test Contact Form Response | Rafi Codes',
+                    text: `${message}\n⸻\nName: ${name}\nEmail: ${email}`,
+                }).then((result) => {
+                    response.status(200).json({ success: result });
+                });
+
+                return;
+            }
+
+            // For form submissions, validate reCAPTCHA token
+            const tokenValidator = await fetch(`https://recaptchaenterprise.googleapis.com/v1/projects/${process.env.RECAPTCHA_PROJECT_ID}/assessments?key=${process.env.RECAPTCHA_API_KEY}`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    event: {
+                        token: token,
+                        siteKey: process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY,
+                        expectedAction: 'submit'
+                    }
+                })
+            });
+
+            const { tokenProperties, riskAnalysis } = await tokenValidator.json();
+
             if (tokenProperties.valid && riskAnalysis.score > 0.5) {
                 await transporter.sendMail({
                     from: email,
