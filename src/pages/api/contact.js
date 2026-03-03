@@ -6,10 +6,11 @@ const client = new google.auth.OAuth2(process.env.CLIENT_ID, process.env.CLIENT_
 client.setCredentials({ refresh_token: process.env.REFRESH_TOKEN });
 
 export default async function handler(request, response) {
-    const { name, email, message, token } = request.body;
-
     // Check if request is from Vercel cron
     const isCronRequest = request.headers.authorization === `Bearer ${process.env.CRON_SECRET}`;
+
+    // Only destructure body for POST requests (GET cron requests won't have a body)
+    const { name, email, message, token } = request.method === 'POST' ? request.body : { name: request.query.name, email: request.query.email, message: request.query.message, token: null };
 
     const isValidRequest = () => {
         const invalidInput = (input) => input === null || input === undefined || input === '';
@@ -22,7 +23,7 @@ export default async function handler(request, response) {
         return !invalidInput(name) && !invalidInput(email) && !invalidInput(message) && !invalidInput(token);
     };
 
-    if (request.method === 'POST' && isValidRequest()) {
+    if ((request.method === 'POST' || isCronRequest) && isValidRequest()) {
         const transporter = createTransport({
             service: 'gmail',
             auth: {
