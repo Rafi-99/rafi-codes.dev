@@ -1,7 +1,7 @@
 {
     "crons": [{
         "path": "/api/contact?name=Test&email=test@rafi-codes.dev&message=This+is+a+test+message.",
-        "schedule": "0 13 1-7 * 5"
+        "schedule": "0 13 * * 5"
     }],
 
     "github": {
