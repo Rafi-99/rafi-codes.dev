@@ -1,0 +1,84 @@
+.wrapper {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 2.5rem 1.25rem;
+    text-align: center;
+}
+
+.text {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    max-width: 420px;
+}
+
+.code {
+    font-size: var(--text-hero);
+    font-weight: 700;
+    color: var(--accent);
+    text-shadow: 0 0 30px var(--accent-glow);
+    line-height: 1;
+}
+
+.text h1 {
+    font-size: var(--text-lg);
+    color: var(--text-bright);
+}
+
+.text p {
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+.retry {
+    background: transparent;
+    border: 1px solid var(--border-bright);
+    border-radius: 4px;
+    color: var(--text-muted);
+    padding: 0.6rem 1rem;
+    font-family: var(--font-mono);
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.retry:hover {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+}
+
+.retry:active {
+    transform: scale(0.95);
+    transition: transform 0.05s ease;
+}
+
+.home {
+    display: flex;
+    align-items: center;
+    margin-top: 0.5rem;
+    border: 1px solid var(--accent-dim);
+    border-radius: 4px;
+    color: var(--accent);
+    padding: 0.6rem 1rem;
+    transition: background 0.2s ease;
+}
+
+.home:hover {
+    background: var(--accent-glow);
+}
+
+.home:active {
+    transform: scale(0.95);
+    transition: transform 0.05s ease;
+}
+
+.shapes {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    opacity: 0.7;
+}

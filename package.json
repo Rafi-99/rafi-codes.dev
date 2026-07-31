@@ -1,30 +1,34 @@
 {
     "name": "rafi-codes.dev",
+    "version": "3.0.0",
     "private": true,
     "scripts": {
-        "dev": "next dev --turbo",
-        "build": "next build --webpack",
+        "dev": "next dev",
+        "build": "next build",
         "start": "next start",
-        "lint": "next lint"
+        "lint": "eslint"
     },
     "dependencies": {
-        "@react-aria/overlays": "^3.26.1",
-        "@react-three/drei": "^9.88.7",
-        "@react-three/fiber": "^8.15.8",
-        "@vercel/analytics": "^1.5.0",
-        "@vercel/speed-insights": "^1.2.0",
-        "framer-motion": "^12.5.0",
-        "googleapis": "^128.0.0",
-        "mongodb": "^6.9.0",
-        "next": "^16.1.6",
-        "next-pwa": "^5.6.0",
-        "nodemailer": "^7.0.11",
-        "react": "^18.3.1",
-        "react-dom": "^18.3.1",
-        "react-icons": "^5.1.0"
+        "@react-three/drei": "^10.7.7",
+        "@react-three/fiber": "^9.6.1",
+        "@vercel/analytics": "^2.0.1",
+        "@vercel/speed-insights": "^2.0.0",
+        "framer-motion": "^12.43.0",
+        "googleapis": "^173.0.0",
+        "mongodb": "^7.5.0",
+        "next": "16.2.12",
+        "nodemailer": "^9.0.3",
+        "react": "19.2.4",
+        "react-dom": "19.2.4",
+        "react-icons": "^5.7.0",
+        "three": "^0.185.1"
     },
     "devDependencies": {
-        "eslint": "^9.39.4",
-        "eslint-config-next": "^16.1.6"
+        "@serwist/turbopack": "^9.5.12",
+        "babel-plugin-react-compiler": "1.0.0",
+        "esbuild": "^0.28.1",
+        "eslint": "^9",
+        "eslint-config-next": "16.2.12",
+        "serwist": "^9.5.12"
     }
 }

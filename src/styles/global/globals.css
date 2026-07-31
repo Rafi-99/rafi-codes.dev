@@ -1,27 +1,88 @@
-html, body {
+:root {
+    /* Surfaces */
+    --bg: #0a0d12;
+    --bg-raised: #10151c;
+    --bg-terminal: #0d1117;
+    --border: #1f2933;
+    --border-bright: #2d3844;
+
+    /* Text */
+    --text-bright: #e6edf3;
+    --text-muted: #7d8b99;
+    --text-dim: #4a5560;
+
+    /* Accents */
+    --accent: #6ee7a5;
+    --accent-dim: #3fa46b;
+    --accent-glow: rgba(110, 231, 165, 0.35);
+    --amber: #ffb454;
+    --amber-glow: rgba(255, 180, 84, 0.3);
+    --red: #ff6b6b;
+    --blue: #79c0ff;
+
+    /* Type */
+    --font-mono: var(--font-jetbrains-mono), ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+    /* Fluid type scale — single source of truth for every font-size in the app. Vars help keep the UI consistent across pages and components.
+
+       scale:
+         --text-xs   0.75rem                        utility / legal / timestamp
+         --text-sm   0.85rem                        captions / secondary meta
+         --text-base 0.95rem                        body / paragraph / nav links
+         --text-md   1.05rem                        emphasized body / card titles
+         --text-lg   clamp(1.1rem, 2.8vw, 1.3rem)   section headings
+         --text-xl   clamp(1.4rem, 4vw, 1.9rem)     page headings / hero
+         --text-hero clamp(2.5rem, 6vw, 3.5rem)     giant (404 code, etc.)
+    */
+    --text-xs: 0.75rem;
+    --text-sm: 0.85rem;
+    --text-base: 0.95rem;
+    --text-md: 1.05rem;
+    --text-lg: clamp(1.1rem, 2.8vw, 1.3rem);
+    --text-xl: clamp(1.4rem, 4vw, 1.9rem);
+    --text-hero: clamp(2.5rem, 6vw, 3.5rem);
+
+    /* Layout */
+    --max-width: 880px;
+    --max-width-narrow: 640px;
+    --radius: 8px;
+
+    /* Fluid spacing scale — used instead of per-breakpoint overrides so spacing scales continuously with viewport width. */
+    --space-xs: clamp(0.5rem, 1vw, 0.75rem);
+    --space-sm: clamp(0.85rem, 1.8vw, 1.25rem);
+    --space-md: clamp(1.5rem, 3.5vw, 2.25rem);
+    --space-lg: clamp(2.25rem, 5vw, 3.5rem);
+    --space-xl: clamp(3rem, 7vw, 5rem);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
     padding: 0;
     margin: 0;
-    max-width: 100%;
-    min-height: 100vh;
-    height: 100%;
-    background: #202020;
-    color: white;
-    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    font-size: 100%;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+    background-color: var(--bg);
+    color: var(--text-bright);
+    font-family: var(--font-mono);
     scroll-behavior: smooth;
 }
 
 body {
-    overflow: overlay;
-    overflow-x: hidden;
-    overflow-y: auto;
-    -webkit-overflow-scrolling: touch;
+    position: relative;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
 }
 
-h1 {
-    font-weight: inherit;
+main {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 a {
@@ -29,30 +90,150 @@ a {
     text-decoration: none;
 }
 
-* {
-    box-sizing: border-box;
+ul,
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-::-webkit-scrollbar {
-    background: transparent;
-    width: 10px;
-}
-::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.5);
-    border-radius: 10px;
+h1,
+h2,
+h3,
+p {
+    margin: 0;
 }
 
-#__next {
-    display: flex;
-    flex-direction: column;
-    min-height: inherit;
+button {
+    font-family: var(--font-mono);
+    cursor: pointer;
+}
+
+::selection {
+    background: var(--accent-glow);
+    color: var(--text-bright);
+}
+
+/* Scrollbar hidden entirely, cross-browser — content stays scrollable. */
+html {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+html::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
 }
 
 .grecaptcha-badge {
     visibility: hidden;
 }
 
-.overlay {
+.cursor {
+    display: inline-block;
+    width: 0.55ch;
+    height: 1em;
+    margin-left: 2px;
+    vertical-align: -0.15em;
+    background: var(--accent);
+    animation: blink 1s steps(1) infinite;
+}
+
+@keyframes blink {
+    0%,
+    49% {
+        opacity: 1;
+    }
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+/* Reusable terminal window chrome — used to frame content blocks site-wide. */
+.terminal {
+    width: 100%;
+    height: 100%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-terminal);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 20px 60px -20px rgba(0, 0, 0, 0.7);
     overflow: hidden;
-    height: 100vh;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Opt-in hover treatment for terminal windows that act as links/cards */
+.terminal--interactive:hover {
+    border-color: var(--border-bright);
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 24px 70px -20px rgba(0, 0, 0, 0.8), 0 0 30px -8px var(--accent-glow);
+    transform: translateY(-3px);
+}
+
+/* Opt-in slow ambient glow for the single hero terminal window. Restrained
+   on purpose: a slow breathing highlight along the top edge, not a border
+   that changes color or a constant pulse. */
+.terminal--ambient {
+    position: relative;
+}
+
+.terminal--ambient::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    animation: ambient-sweep 7s ease-in-out infinite;
+}
+
+@keyframes ambient-sweep {
+    0%,
+    100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+.terminal_bar {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.65rem 0.85rem;
+    background: var(--bg-raised);
+    border-bottom: 1px solid var(--border);
+}
+
+.terminal_dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.terminal_title {
+    flex: 1;
+    text-align: center;
+    font-size: var(--text-xs);
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+}
+
+.glow_text {
+    text-shadow: 0 0 20px var(--accent-glow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
 }

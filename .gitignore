@@ -3,11 +3,12 @@
 
 # Next.js
 /.next/
+build
 
 # Environment variables
 .env.local
 
 # PWA
-**/public/fallback-*.js
 **/public/sw.js
-**/public/workbox-*.js
+**/public/sw.js.map
+**/public/swe-worker-*.js

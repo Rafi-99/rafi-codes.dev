@@ -1,0 +1,46 @@
+.wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* Always-on CSS glow — renders with zero JS dependency, so the page never
+   looks flatly empty even before/without the canvas. Two independent
+   blooms (own timing/phase each, via ::before/::after) so the pulse reads
+   as organic rather than one uniform heartbeat, plus a static third wash
+   for a bit of base warmth. */
+.glow {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(900px circle at 50% 100%, rgba(110, 231, 165, 0.06), transparent 70%);
+}
+
+.glow::before,
+.glow::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    animation: pulse 9s ease-in-out infinite;
+}
+
+.glow::before {
+    background: radial-gradient(560px circle at 12% 18%, rgba(110, 231, 165, 0.18), transparent 60%);
+}
+
+.glow::after {
+    background: radial-gradient(620px circle at 88% 78%, rgba(255, 180, 84, 0.13), transparent 60%);
+    animation-delay: -4.5s;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.55; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+.canvas {
+    position: absolute;
+    inset: 0;
+    opacity: 0.8;
+}

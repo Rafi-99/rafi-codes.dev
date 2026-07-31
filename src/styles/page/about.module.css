@@ -1,0 +1,230 @@
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: clamp(2.75rem, 8vw, 4.5rem) 1.25rem var(--space-lg);
+}
+
+.intro {
+    container-type: inline-size;
+    width: 100%;
+    max-width: var(--max-width);
+    margin-bottom: var(--space-md);
+}
+
+.promptLine {
+    text-align: center;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: var(--space-sm);
+}
+
+.introRow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm) var(--space-md);
+}
+
+.picture {
+    flex-shrink: 0;
+    border-radius: 50%;
+    border: 2px solid var(--border-bright);
+    box-shadow: 0 0 30px var(--accent-glow);
+    width: 140px;
+    height: 140px;
+}
+
+.bio {
+    flex: 1 1 320px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* Container query — when the intro section has room, grow the picture. No viewport breakpoints needed. */
+@container (min-width: 640px) {
+    .picture {
+        width: 170px;
+        height: 170px;
+    }
+
+    .bio {
+        font-size: var(--text-md);
+    }
+}
+
+.promptSymbol {
+    color: var(--accent);
+}
+
+.terminal {
+    width: 100%;
+}
+
+.terminal > .titles,
+.terminal > .skills,
+.terminal > .jobs,
+.terminal > .interests,
+.terminal > .resumeWrapper {
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
+}
+
+.terminal > .titles:first-child {
+    margin-top: var(--space-md);
+}
+
+.titles {
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-sm);
+    font-size: var(--text-lg);
+    color: var(--text-bright);
+}
+
+.skills {
+    container-type: inline-size;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.skillCard {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    padding: var(--space-md) var(--space-sm);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.6rem;
+    text-align: center;
+    transition: border-color 0.25s ease, transform 0.25s ease;
+}
+
+.skillCard:hover {
+    border-color: var(--accent-dim);
+    transform: translateY(-3px);
+}
+
+.skillCard svg {
+    font-size: var(--text-xl);
+    color: var(--accent);
+}
+
+.skillTitle {
+    font-weight: 600;
+    color: var(--text-bright);
+}
+
+.skillDescription {
+    color: var(--text-muted);
+    font-size: var(--text-base);
+    line-height: 1.5;
+}
+
+@container (min-width: 460px) {
+    .skillCard {
+        aspect-ratio: 1;
+        justify-content: center;
+        overflow-y: auto;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+    }
+
+    .skillCard::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+.jobs {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-xs);
+}
+
+.jobCard {
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent-dim);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    padding: var(--space-md);
+    transition: border-color 0.25s ease, background 0.25s ease;
+}
+
+.jobCard:hover {
+    border-color: var(--border-bright);
+    border-left-color: var(--accent);
+    background: color-mix(in srgb, var(--bg-raised) 85%, var(--accent) 3%);
+}
+
+.jobTitle {
+    font-weight: 600;
+    color: var(--text-bright);
+    font-size: var(--text-md);
+}
+
+.jobMeta {
+    color: var(--amber);
+    font-size: var(--text-sm);
+    margin: 0.3rem 0 0.9rem;
+}
+
+.bullets {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+}
+
+.bullet {
+    color: var(--text-muted);
+    font-size: var(--text-base);
+    line-height: 1.6;
+    padding-left: 1.1rem;
+    position: relative;
+}
+
+.bullet::before {
+    content: '›';
+    position: absolute;
+    left: 0;
+    color: var(--accent-dim);
+}
+
+.interests {
+    color: var(--text-muted);
+    padding-bottom: var(--space-xs);
+}
+
+.resumeWrapper {
+    display: flex;
+    justify-content: flex-start;
+    padding-bottom: var(--space-md);
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--accent-dim);
+    border-radius: 4px;
+    color: var(--accent);
+    padding: 0.75rem 1.25rem;
+    font-size: var(--text-base);
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.button:hover {
+    background: var(--accent-dim);
+    color: var(--bg-terminal);
+    border-color: var(--accent-dim);
+    transform: translateY(-1px);
+}
+
+.button:active {
+    transform: scale(0.95);
+    transition: transform 0.05s ease;
+}

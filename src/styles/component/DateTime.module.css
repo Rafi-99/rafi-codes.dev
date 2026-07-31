@@ -1,0 +1,5 @@
+.datetime {
+    color: var(--text-dim);
+    font-size: var(--text-xs);
+    letter-spacing: 0.02em;
+}

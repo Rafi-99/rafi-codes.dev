@@ -1,0 +1,105 @@
+.form_container {
+    position: relative;
+    z-index: 1;
+    margin: 0 auto;
+    max-width: 640px;
+}
+
+.body {
+    padding: clamp(1.25rem, 3vw, 2rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--text-bright);
+    margin-bottom: 0.5rem;
+}
+
+.body form {
+    display: flex;
+    flex-direction: column;
+}
+
+.body form > label {
+    color: var(--text-muted);
+    font-size: var(--text-base);
+    margin: 0.6rem 0 0.35rem;
+}
+
+.comment {
+    color: var(--accent-dim);
+}
+
+.body form > input,
+.body form > textarea {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    resize: none;
+    padding: 0.7rem 0.85rem;
+    background: var(--bg-raised);
+    color: var(--text-bright);
+    font-family: var(--font-mono);
+    font-size: var(--text-base);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.body form > input:focus,
+.body form > textarea:focus {
+    outline: none;
+    border-color: var(--accent-dim);
+    box-shadow: 0 0 0 3px var(--accent-glow);
+}
+
+.body form > button[type='submit'] {
+    margin-top: 1.1rem;
+    border: 1px solid var(--accent-dim);
+    border-radius: 4px;
+    background: transparent;
+    color: var(--accent);
+    padding: 0.75rem 1rem;
+    font-size: var(--text-base);
+    font-weight: 600;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.body form > button[type='submit']:hover {
+    background: var(--accent-dim);
+    color: var(--bg-terminal);
+    border-color: var(--accent-dim);
+}
+
+.body form > button[type='submit']:active {
+    transform: scale(0.95);
+    transition: transform 0.05s ease;
+}
+
+.body form > button[type='submit'].success_message {
+    background: var(--accent-dim);
+    color: var(--bg-terminal);
+    border-color: var(--accent-dim);
+}
+
+.body form > button[type='submit'].error_message {
+    background: var(--red);
+    color: var(--bg-terminal);
+    border-color: var(--red);
+}
+
+.body form > small {
+    margin-top: 0.75rem;
+    color: var(--text-dim);
+    font-size: var(--text-xs);
+    line-height: 1.5;
+}
+
+.body form > small a {
+    color: var(--blue);
+}

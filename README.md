@@ -1,34 +1,52 @@
-# Rafi Codes | Portfolio
+# Rafi Codes
+Welcome to my personal portfolio! This website serves as a showcase for my projects and a way to contact me.
 
-## About
-This repository hosts the source code for my website, [rafi-codes.dev](https://www.rafi-codes.dev). I built this
-project using the Next.js React framework. This is the second iteration of my portfolio. Version 1.0 can be found
-[here](https://github.com/Rafi-99/Portfolio-Website).
+[Click here to check it out live!](https://rafi-codes.dev)
 
-## How It Works
-* This codebase is a monorepo that contains both the front-end and back-end of my site
-* Front-end: Next.js
-* Back-end: Next.js + MongoDB
-* Page routing is handled by Next.js through the <code>src/pages</code> directory
-* About Me page pulls the latest information from the database on each request, thanks to Next.js SSR
-* Contact Me page uses Nodemailer + Google APIs to send form data to my email via an API route on my site
-* Cool 3D animations are provided with the Three.js library
-* All other animations are implemented with CSS
-* Will update this accordingly!
+![Rafi Codes](image.png)
 
-## Key Things I Learned
-* React.js basics and fundamentals
-* Next.js basics and fundamentals
-* How to create a highly performant app leveraging Next.js built-in features
-* How to improve search engine optimization (SEO)
-* How to create a full-stack Progressive Web App (PWA)
-* How to design a clean User Interface (UI)
-* How to give users a smooth User Experience (UX)
-* How to implement custom styling without a CSS framework
-* How to achieve mobile responsiveness with almost 0 media queries
-* And much more!
+## Tech Stack
+- **Next.js 16** — React framework (App Router, Turbopack).
+- **React 19** — Latest version of React. Comes with performance optimizations.
+- **MongoDB** — Data storage for skills & work experience.
+- **Three.js / React Three Fiber** — 3D ambient background.
+- **Framer Motion** — Page transitions and loading animations.
+- **Googleapis & Nodemailer** — Gmail OAuth2 email delivery through the contact form.
+- **Serwist** — PWA support.
+- **Vercel Analytics & Speed Insights** — Performance monitoring.
 
-## Current Plans
-* Continue to implement improvements/optimizations to the site, no matter how minor
-* Stay up-to-date with current web technologies/trends and implement new features accordingly
-* Implement the next version with Next.js and Three.js
+## Pages
+| Route       | Description                                                       |
+| ----------- | ----------------------------------------------------------------- |
+| `/`         | Home — Terminal-style welcome with typing effect & live clock.    |
+| `/about`    | Résumé — Skills and work experience are fetched from MongoDB.     |
+| `/projects` | Project - Showcase of all projects.                               |
+| `/contact`  | Contact - Form with Gmail delivery and reCAPTCHA spam protection  |
+
+## Core Project Structure
+```
+src/
+├── app/            # App Router pages & API routes.
+│   ├── about/      # Résumé page.
+│   ├── contact/    # Contact page.
+│   ├── projects/   # Projects page.
+│   ├── api/contact # Endpoint for contact form.
+│   └── layout.js   # Root layout.
+├── components/     # Reusable UI components.
+├── hooks/          # Custom React hooks.
+├── styles/         # CSS modules (global, component, page).
+└── utils/          # Utilities (e.g. DatabaseService).
+```
+
+## Features
+- 💬 **Contact Form** — Sends emails via Gmail OAuth2, protected with reCAPTCHA Enterprise.
+- 📈 **Live Interactive Environment** — Home page displays the current date & time inside an interactive terminal.
+- 🎨 **3D Ambient Background** — Developed with React Three Fiber.
+- 📱 **PWA** — Install as an app and experience mobile first design.
+- 🔍 **SEO** — Sitemap, robots, manifest, and Open Graph metadata.
+
+## Coming Soon
+- Stay tuned for more features! This README will be updated with every new feature release.
+
+---
+© Rafi Codes. All rights reserved.

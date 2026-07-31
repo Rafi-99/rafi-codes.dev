@@ -1,0 +1,107 @@
+.nav {
+    container-type: inline-size;
+    width: 100%;
+    height: 64px;
+    background: var(--bg-raised);
+    border-bottom: 1px solid var(--border);
+    color: var(--text-bright);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 clamp(1.25rem, 4vw, 3rem);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+}
+
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-size: var(--text-base);
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--text-bright);
+}
+
+.promptSymbol {
+    color: var(--accent);
+}
+
+.nav > ul {
+    display: flex;
+    gap: clamp(1.25rem, 3vw, 2rem);
+}
+
+.nav ul a {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: var(--text-muted);
+    transition: color 0.2s ease;
+    font-size: var(--text-base);
+}
+
+.nav ul a:hover {
+    color: var(--text-bright);
+}
+
+.nav ul a .promptSymbol {
+    color: var(--amber);
+}
+
+.nav ul a.active {
+    color: var(--accent);
+}
+
+.burger {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--text-bright);
+    padding: 0.4rem;
+}
+
+/* Container query, not a media query — the nav responds to its own
+   available width rather than a hardcoded viewport breakpoint, so it keeps
+   working correctly at any container size (e.g. embedded, split-screen). */
+@container (max-width: 640px) {
+    ul.open,
+    ul.closed {
+        position: fixed;
+        top: 64px;
+        left: 0;
+        width: 100%;
+        background-color: color-mix(in srgb, var(--bg) 97%, transparent);
+        backdrop-filter: blur(8px);
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+        padding: 0 clamp(1.25rem, 4vw, 3rem);
+        overflow: hidden;
+        transition: height 0.35s ease;
+    }
+
+    ul.open a,
+    ul.closed a {
+        font-size: var(--text-lg);
+        padding: 1.1rem 0;
+        width: 100%;
+        border-bottom: 1px solid var(--border);
+    }
+
+    ul.open {
+        height: calc(100dvh - 64px);
+    }
+
+    ul.closed {
+        height: 0px;
+    }
+
+    .burger {
+        display: flex;
+    }
+}

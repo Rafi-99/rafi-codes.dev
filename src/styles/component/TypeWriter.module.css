@@ -1,0 +1,10 @@
+.text_type {
+    font-size: var(--text-md);
+    color: var(--text-muted);
+    line-height: 1.5;
+}
+
+.text {
+    color: var(--text-bright);
+    font-weight: 600;
+}

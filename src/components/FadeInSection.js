@@ -1,7 +1,9 @@
-import { useEffect, useRef, useState } from 'react';
-import styles from '../styles/components/FadeInSection.module.css';
+'use client';
 
-export default function FadeInSection(props) {
+import { useEffect, useRef, useState } from 'react';
+import styles from '@styles/component/FadeInSection.module.css';
+
+export default function FadeInSection({ delay = 0, children }) {
     const [ visible, setVisible ] = useState(false);
     const componentRef = useRef(null);
 
@@ -28,8 +30,8 @@ export default function FadeInSection(props) {
     }, []);
 
     return (
-        <div ref={componentRef} className={visible ? styles.visible : styles.hidden}>
-            {props.children}
+        <div ref={componentRef} className={visible ? styles.visible : styles.hidden} style={{ transitionDelay: `${delay}s` }}>
+            {children}
         </div>
     );
 };
