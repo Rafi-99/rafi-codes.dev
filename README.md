@@ -3,7 +3,7 @@ Welcome to my personal portfolio! This website serves as a showcase for my proje
 
 [Click here to check it out live!](https://rafi-codes.dev)
 
-![Rafi Codes](image.png)
+![Rafi Codes](public/assets/images/portfolio.png)
 
 ## Tech Stack
 - **Next.js 16** — React framework (App Router, Turbopack).
