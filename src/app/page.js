@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { generateOpenGraphImage } from '@utils/OpenGraph';
 import DateTime from '@components/DateTime';
 import TypeWriter from '@components/TypeWriter';
 import TerminalWindow from '@components/TerminalWindow';
@@ -11,10 +12,16 @@ export const metadata = {
     alternates: { canonical: '/' },
     openGraph: {
         title: 'Rafi Codes | Home',
-        description: 'Welcome to my home base on the internet! Feel free to check out my portfolio.',
+        description: 'Hello! My name is Rafi and I am a Full-Stack Software Engineer. Welcome to my home base on the internet.',
         url: process.env.SITE_URL,
-        images: ['/assets/images/profile.png'],
+        images: [{ url: generateOpenGraphImage({ title: 'Rafi Codes', description: 'Welcome to my portfolio!', prompt: '$ cat welcome.txt', tag: 'Home', accent: '#7dd3fc' }), width: 1200, height: 630, alt: 'Rafi Codes - Home | Open Graph Card' }]
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Rafi Codes | Home',
+        description: 'Hello! My name is Rafi and I am a Full-Stack Software Engineer. Welcome to my home base on the internet.',
+        images: [ generateOpenGraphImage({ title: 'Rafi Codes', description: 'Welcome to my portfolio!', prompt: '$ cat welcome.txt', tag: 'Home', accent: '#7dd3fc' }) ]
+    }
 };
 
 export default function Home() {

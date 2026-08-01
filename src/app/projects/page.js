@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { generateOpenGraphImage } from '@utils/OpenGraph';
 import { GrReddit, GrHeroku } from "react-icons/gr";
 import { SiGithub, SiGradle, SiDiscord, SiYoutube, SiNodedotjs, SiNextdotjs, SiMongodb, SiSquarespace } from 'react-icons/si';
 import FadeInSection from '@components/FadeInSection';
@@ -12,10 +13,16 @@ export const metadata = {
     alternates: { canonical: '/projects' },
     openGraph: {
         title: 'Rafi Codes | Projects',
-        description: 'Project showcase.',
+        description: 'A collection of my recent projects.',
         url: `${process.env.SITE_URL}/projects`,
-        images: [ '/assets/images/nextjs.png' ],
+        images: [{ url: generateOpenGraphImage({ title: 'My Projects', description: 'Take a look at what I have been working on!', prompt: '$ ls ./projects', tag: 'Projects', accent: '#fbbf24' }), width: 1200, height: 630, alt: 'Rafi Codes - Projects | Open Graph Card' }]
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Rafi Codes | Projects',
+        description: 'A collection of my recent projects.',
+        images: [ generateOpenGraphImage({ title: 'My Projects', description: 'Take a look at what I have been working on!', prompt: '$ ls ./projects', tag: 'Projects', accent: '#fbbf24' }) ]
+    }
 };
 
 const projects = [

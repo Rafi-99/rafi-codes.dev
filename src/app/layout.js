@@ -2,6 +2,7 @@ import { JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/react';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import { SerwistProvider } from '@serwist/turbopack/react';
+import { generateOpenGraphImage } from '@utils/OpenGraph';
 import AmbientBackground from '@components/AmbientBackground';
 import Navigation from '@components/Navigation';
 import Footer from '@components/Footer';
@@ -15,7 +16,7 @@ export const metadata = {
         default: 'Rafi Codes',
         template: 'Rafi Codes | %s',
     },
-    description: 'Rafi Codes | Software Engineer.',
+    description: 'Rafi Codes | Full-Stack Software Engineer.',
     manifest: '/manifest.webmanifest',
     icons: {
         icon: [
@@ -35,7 +36,14 @@ export const metadata = {
     openGraph: {
         siteName: 'Rafi Codes',
         type: 'website',
+        images: [{ url: generateOpenGraphImage({ title: 'Rafi Codes', description: 'Full-Stack Software Engineer.' }), width: 1200, height: 630, alt: 'Rafi Codes | Open Graph Card' }]
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Rafi Codes',
+        description: 'Rafi Codes | Full-Stack Software Engineer.',
+        images: [ generateOpenGraphImage({ title: 'Rafi Codes', description: 'Full-Stack Software Engineer.' }) ]
+    }
 };
 
 export const viewport = {

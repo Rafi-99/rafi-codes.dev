@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { getConnection } from '@utils/DatabaseService';
+import { generateOpenGraphImage } from '@utils/OpenGraph';
 import { FaLaptopCode, FaReact, FaAws, FaDatabase, FaDownload } from 'react-icons/fa';
 import FadeInSection from '@components/FadeInSection';
 import TerminalWindow from '@components/TerminalWindow';
-import { getConnection } from '@utils/DatabaseService';
 import styles from '@styles/page/about.module.css';
 
 export const metadata = {
@@ -12,10 +13,16 @@ export const metadata = {
     alternates: { canonical: '/about' },
     openGraph: {
         title: 'Rafi Codes | About',
-        description: 'About Rafi: Software Engineer',
+        description: 'Click here to learn more about me!',
         url: `${process.env.SITE_URL}/about`,
-        images: [ '/assets/images/runner.png' ],
+        images: [{ url: generateOpenGraphImage({title: 'About Rafi', description: 'Check out my skills and work experience.', prompt: '$ whoami', tag: 'About', accent: '#34d399' }), width: 1200, height: 630, alt: 'Rafi Codes - About | Open Graph Card' }]
     },
+    twitter: {
+        card: 'summary_large_image',
+        title: 'Rafi Codes | About',
+        description: 'Click here to learn more about me!',
+        images: [ generateOpenGraphImage({title: 'About Rafi', description: 'Check out my skills and work experience.', prompt: '$ whoami', tag: 'About', accent: '#34d399' }) ]
+    }
 };
 
 const icons = [ <FaLaptopCode key={1} />, <FaReact key={2} />, <FaAws key={3} />, <FaDatabase key={4} /> ];
