@@ -67,11 +67,17 @@ body {
     color: var(--text-bright);
     font-family: var(--font-mono);
     scroll-behavior: smooth;
+    overscroll-behavior-y: none;
 }
 
+/* 100svh = the "small" stable viewport height. Unlike 100dvh (which grows
+   and shrinks as the mobile URL bar collapses/expands during a scroll
+   gesture), svh stays constant — so the footer is never repositioned
+   mid-gesture and on iOS you get one smooth scroll instead of a jerk. */
 body {
     position: relative;
-    min-height: 100dvh;
+    min-height: 100svh;
+    margin-bottom: 0;
     display: flex;
     flex-direction: column;
 }
@@ -79,7 +85,7 @@ body {
 main {
     position: relative;
     z-index: 1;
-    flex: 1;
+    flex: 1 0 auto;
     display: flex;
     flex-direction: column;
     width: 100%;

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { MdClear, MdMenu } from 'react-icons/md';
+import { usePreventScroll } from '@react-aria/overlays';
 import Logo from '@components/Logo';
 import styles from '@styles/component/Navigation.module.css';
 
@@ -14,9 +15,9 @@ const links = [
 ];
 
 export default function Navigation() {
-    const [ open, setOpen ] = useState(false);
-    const pathname = usePathname();
-    const [ prevPathname, setPrevPathname ] = useState(pathname);
+    const currentPath = usePathname();
+    const [ previousPath, setPreviousPath ] = useState(currentPath);
+    const [ opened, setOpened ] = useState(false);
 
     // Close the mobile menu on every route change. This is the "adjust
     // state during render" pattern React recommends instead of an effect
@@ -24,20 +25,12 @@ export default function Navigation() {
     // and calling setState in the render body (not inside useEffect)
     // avoids the cascading-render warning entirely, since React bails out
     // and re-renders with the corrected state before anything paints.
-    if (pathname !== prevPathname) {
-        setPrevPathname(pathname);
-        setOpen(false);
+    if (currentPath !== previousPath) {
+        setPreviousPath(currentPath);
+        setOpened(false);
     }
 
-    // This one's a legitimate effect: syncing React state with an actual
-    // external system (the DOM's body scroll), not calling setState — so
-    // it's untouched by this lint rule.
-    useEffect(() => {
-        document.body.style.overflow = open ? 'hidden' : '';
-        return () => {
-            document.body.style.overflow = '';
-        };
-    }, [ open ]);
+    usePreventScroll({ isDisabled: !opened });
 
     return (
         <nav className={styles.nav}>
@@ -47,13 +40,13 @@ export default function Navigation() {
                 <span className={styles.promptSymbol}>:~$</span>
             </Link>
 
-            <button type='button' className={styles.burger} onClick={() => setOpen(!open)} aria-label='Toggle navigation menu' aria-expanded={open}>
-                {open ? <MdClear fontSize='1.5rem' /> : <MdMenu fontSize='1.5rem' />}
+            <button type='button' className={styles.burger} onClick={() => setOpened(!opened)} aria-label='Toggle navigation menu' aria-expanded={opened}>
+                {opened ? <MdClear fontSize='1.5rem' /> : <MdMenu fontSize='1.5rem' />}
             </button>
 
-            <ul className={open ? styles.open : styles.closed}>
+            <ul className={opened ? styles.open : styles.closed}>
                 {links.map(({ href, label }) => {
-                        const active = pathname === href;
+                        const active = currentPath === href;
                         return (
                             <li key={href}>
                                 <Link href={href} className={active ? styles.active : ''}>
