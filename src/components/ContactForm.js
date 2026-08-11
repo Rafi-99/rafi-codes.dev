@@ -13,35 +13,35 @@ export default function ContactForm() {
 
     const displayAlert = (status) => {
         if (status === 'sending') {
-            alert.current.classList.remove(styles.success_message, styles.error_message);
+            alert.current.classList.remove(styles.successMessage, styles.errorMessage);
             alert.current.textContent = 'Sending...';
         }
 
         else {
             if (status === 'success') {
-                alert.current.classList.add(styles.success_message);
+                alert.current.classList.add(styles.successMessage);
                 alert.current.textContent = 'Message sent. ✓';
             }
 
             else {
-                alert.current.classList.add(styles.error_message);
+                alert.current.classList.add(styles.errorMessage);
                 alert.current.textContent = 'Error. Try again. ✗';
             }
 
             setTimeout(() => {
-                alert.current.classList.remove(styles.success_message, styles.error_message);
+                alert.current.classList.remove(styles.successMessage, styles.errorMessage);
                 alert.current.textContent = '$ send --message';
             }, 3000);
         }
     };
 
-    const handleChange = event => {
+    const handleChange = (event) => {
         const key = event.target.name;
         const value = event.target.value;
-        setInputs(values => ({ ...values, [key]: value }));
+        setInputs((values) => ({ ...values, [key]: value }));
     };
 
-    const handleSubmit = async event => {
+    const handleSubmit = async (event) => {
         event.preventDefault();
         displayAlert('sending');
 
@@ -64,7 +64,7 @@ export default function ContactForm() {
     };
 
     return (
-        <TerminalWindow title='rafi@codes: ~/contact' className={styles.form_container} variant='ambient'>
+        <TerminalWindow title='rafi@codes: ~/contact' className={styles.formContainer} variant='ambient'>
             <div className={styles.body}>
                 <p className={styles.heading}><FaPaperPlane />&nbsp;Let&apos;s Connect!</p>
 
@@ -85,4 +85,4 @@ export default function ContactForm() {
             </div>
         </TerminalWindow>
     );
-};
+}

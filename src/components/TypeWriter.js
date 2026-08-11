@@ -13,7 +13,7 @@ export default function TypeWriter() {
     const [ currentWord ] = useTypingEffect(words);
 
     return (
-        <p className={styles.text_type}>
+        <p className={styles.textType}>
             <span className={styles.text}>
                 {currentWord}
                 <span className="cursor" />

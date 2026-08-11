@@ -1,84 +1,10 @@
 .wrapper {
+    container-type: inline-size;
     flex: 1;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: var(--space-lg) 1.25rem;
-}
-
-/* Right-sized to its own content — a profile card, not a full-width panel.
-   Higher specificity than the shared .terminal so it wins regardless of
-   CSS import order. */
-.wrapper .terminal {
-    max-width: 680px;
-}
-
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: var(--space-xs);
-    padding: var(--space-md) var(--space-sm) var(--space-md);
-}
-
-.profile {
-    border-radius: 50%;
-    overflow: hidden;
-    border: 2px solid var(--border-bright);
-    box-shadow: 0 0 30px var(--accent-glow);
-    margin-bottom: 0.25rem;
-}
-
-.picture {
-    display: block;
-}
-
-.commandBlock {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-}
-
-.greeting {
-    font-size: var(--text-base);
-    color: var(--text-bright);
-}
-
-.promptSymbol {
-    color: var(--accent);
-    margin-right: 0.5rem;
-    font-size: var(--text-base);
-    opacity: 0.85;
-}
-
-.links {
-    display: flex;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    gap: 0.85rem;
-    margin-top: var(--space-xs);
-}
-
-.links button {
-    background: transparent;
-    border: 1px solid var(--border-bright);
-    border-radius: 4px;
-    color: var(--text-muted);
-    padding: 0.65rem 1.1rem;
-    font-size: var(--text-base);
-    font-family: var(--font-mono);
-    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-}
-
-.links button:hover {
-    border-color: var(--accent-dim);
-    color: var(--accent);
-    box-shadow: 0 0 16px var(--accent-glow);
-    transform: translateY(-1px);
-}
-
-.links button:active {
-    transform: scale(0.95);
-    transition: transform 0.05s ease;
+    gap: var(--space-md);
+    padding: var(--space-lg) 1.25rem;
 }

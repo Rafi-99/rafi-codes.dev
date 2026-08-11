@@ -84,62 +84,6 @@
     color: var(--text-bright);
 }
 
-.skills {
-    container-type: inline-size;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--space-sm);
-    margin-bottom: var(--space-xs);
-}
-
-.skillCard {
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    background: var(--bg-raised);
-    padding: var(--space-md) var(--space-sm);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.6rem;
-    text-align: center;
-    transition: border-color 0.25s ease, transform 0.25s ease;
-}
-
-.skillCard:hover {
-    border-color: var(--accent-dim);
-    transform: translateY(-3px);
-}
-
-.skillCard svg {
-    font-size: var(--text-xl);
-    color: var(--accent);
-}
-
-.skillTitle {
-    font-weight: 600;
-    color: var(--text-bright);
-}
-
-.skillDescription {
-    color: var(--text-muted);
-    font-size: var(--text-base);
-    line-height: 1.5;
-}
-
-@container (min-width: 460px) {
-    .skillCard {
-        aspect-ratio: 1;
-        justify-content: center;
-        overflow-y: auto;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .skillCard::-webkit-scrollbar {
-        display: none;
-    }
-}
-
 .jobs {
     display: flex;
     flex-direction: column;
@@ -149,7 +93,6 @@
 
 .jobCard {
     border: 1px solid var(--border);
-    border-left: 2px solid var(--accent-dim);
     border-radius: var(--radius);
     background: var(--bg-raised);
     padding: var(--space-md);
@@ -158,7 +101,6 @@
 
 .jobCard:hover {
     border-color: var(--border-bright);
-    border-left-color: var(--accent);
     background: color-mix(in srgb, var(--bg-raised) 85%, var(--accent) 3%);
 }
 

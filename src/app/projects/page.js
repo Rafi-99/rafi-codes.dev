@@ -59,30 +59,23 @@ export default function Projects() {
                 <h1><span className={styles.promptSymbol}>$</span> ls ./projects</h1>
                 <p>Come check out what I&apos;ve been working on recently!</p>
             </div>
-
-            <div className={styles.cards_container}>
+            <div className={styles.cardsContainer}>
                 {projects.map((project, index) => (
-                        <FadeInSection key={project.title} delay={index * 0.15}>
-                            <TerminalWindow title={`${project.title.replace(/\s+/g, '-')}/README.md`} variant='interactive'>
-                                <div className={styles.card_body}>
-                                    <div className={styles.thumb}>
-                                        <Image src={project.image} fill sizes='(min-width: 900px) 45vw, 100vw' alt={`Project thumbnail: ${project.title}`} />
-                                    </div>
-                                    <h2>
-                                        <span className={styles.titleGroup}>
-                                            {project.title}&nbsp;
-                                            <Link href={project.repo} rel='noopener noreferrer' target='_blank' aria-label={`Link to Rafi's GitHub project | ${project.title}`}><SiGithub /></Link>
-                                        </span>
-                                        <span className={styles.status} data-status={project.status}>{project.status}</span>
-                                    </h2>
-                                    <p>{project.description}</p>
-                                    <div className={styles.tools}>{project.tools}</div>
-                                </div>
-                            </TerminalWindow>
-                        </FadeInSection>
-                    ))
-                }
+                    <FadeInSection key={project.title} delay={index * 0.15}>
+                        <TerminalWindow title={`${project.title.replace(/\s+/g, '-')}/README.md`} variant='interactive'>
+                        <div className={styles.cardBody}>
+                            <div className={styles.thumb}><Image src={project.image} fill sizes='(min-width: 900px) 45vw, 100vw' alt={`Project thumbnail: ${project.title}`} /></div>
+                            <h2>
+                                <Link className={styles.titleGroup} href={project.repo} rel='noopener noreferrer' target='_blank' aria-label={`Link to Rafi's GitHub project | ${project.title}`}>{project.title}&nbsp;<SiGithub /></Link>
+                                <span className={styles.status} data-status={project.status}>{project.status}</span>
+                            </h2>
+                            <p>{project.description}</p>
+                            <div className={styles.tools}>{project.tools}</div>
+                        </div>
+                        </TerminalWindow>
+                    </FadeInSection>
+                ))}
             </div>
         </div>
     );
-};
+}

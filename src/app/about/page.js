@@ -2,7 +2,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { getConnection } from '@utils/DatabaseService';
 import { generateOpenGraphImage } from '@utils/OpenGraph';
-import { FaLaptopCode, FaReact, FaAws, FaDatabase, FaDownload } from 'react-icons/fa';
+import { FaDownload } from 'react-icons/fa';
+import SkillsJson from '@components/SkillsJson';
 import FadeInSection from '@components/FadeInSection';
 import TerminalWindow from '@components/TerminalWindow';
 import styles from '@styles/page/about.module.css';
@@ -24,8 +25,6 @@ export const metadata = {
         images: [ generateOpenGraphImage({title: 'About Rafi', description: 'Check out my skills and work experience.', prompt: '$ whoami', tag: 'About', accent: '#34d399' }) ]
     }
 };
-
-const icons = [ <FaLaptopCode key={1} />, <FaReact key={2} />, <FaAws key={3} />, <FaDatabase key={4} /> ];
 
 async function getAboutData() {
     try {
@@ -61,16 +60,7 @@ export default async function About() {
 
             <TerminalWindow title='rafi@codes: ~/about' className={styles.terminal}>
                 <h2 className={styles.titles}><span className={styles.promptSymbol}>$</span> cat skills.json</h2>
-                <div className={styles.skills}>
-                    {skills.map((skill) => (
-                            <div key={skill._id} className={styles.skillCard}>
-                                {icons[skill._id - 1]}
-                                <p className={styles.skillTitle}>{skill.category}</p>
-                                <p className={styles.skillDescription}>{skill.description}</p>
-                            </div>
-                        ))
-                    }
-                </div>
+                <SkillsJson skills={skills} />
 
                 <h2 className={styles.titles}><span className={styles.promptSymbol}>$</span> git log --experience</h2>
                 <div className={styles.jobs}>
@@ -102,4 +92,4 @@ export default async function About() {
             </TerminalWindow>
         </div>
     );
-};
+}

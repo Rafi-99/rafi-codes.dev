@@ -1,0 +1,144 @@
+.shell {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    cursor: text;
+}
+
+.history {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.history::-webkit-scrollbar {
+    display: none;
+}
+
+.entry {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.line {
+    color: var(--text-bright);
+    font-size: var(--text-md);
+    text-align: left;
+}
+
+.prompt {
+    color: var(--accent);
+    margin-right: 0.4rem;
+}
+
+.output {
+    color: var(--text-muted);
+    font-size: var(--text-md);
+    white-space: pre-wrap;
+    text-align: left;
+}
+
+.inputLine {
+    position: relative;
+    display: flex;
+    align-items: baseline;
+    text-align: left;
+    font-size: var(--text-md);
+}
+
+.lineText {
+    color: var(--text-bright);
+    font-size: var(--text-md);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+.hint {
+    color: var(--text-dim);
+    opacity: 0.7;
+}
+
+.hiddenInput {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    border: none;
+    padding: 0;
+    font-size: 16px;
+    cursor: text;
+}
+
+.suggestions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-top: 0.5rem;
+}
+
+.suggestions button {
+    background: var(--bg-raised);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-family: var(--font-mono);
+    font-size: var(--text-xs);
+    padding: 0.35rem 0.6rem;
+}
+
+.suggestions button:hover {
+    border-color: var(--accent-dim);
+    color: var(--accent);
+}
+
+.blockCursor {
+    display: inline-block;
+    animation: terminalBlink 1s steps(1) infinite;
+}
+
+@keyframes terminalBlink {
+    0%, 49% { background: var(--accent); color: var(--bg-terminal); }
+    50%, 100% { background: transparent; color: var(--text-bright); }
+}
+
+.helpList {
+    container-type: inline-size;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.helpIntro {
+    color: var(--text-muted);
+}
+
+.helpRow {
+    display: grid;
+    grid-template-columns: minmax(7.5rem, max-content) 1fr;
+    column-gap: 0.75rem;
+}
+
+.helpUsage {
+    color: var(--text-bright);
+}
+
+.helpDetail {
+    color: var(--text-muted);
+}
+
+@container (max-width: 360px) {
+    .helpRow {
+        grid-template-columns: 1fr;
+        row-gap: 0.1rem;
+        margin-bottom: 0.2rem;
+    }
+}

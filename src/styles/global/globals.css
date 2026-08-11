@@ -138,8 +138,8 @@ html::-webkit-scrollbar {
 
 .cursor {
     display: inline-block;
-    width: 0.55ch;
-    height: 1em;
+    width: 0.6em;
+    height: 1.1em;
     margin-left: 2px;
     vertical-align: -0.15em;
     background: var(--accent);
@@ -173,7 +173,7 @@ html::-webkit-scrollbar {
 }
 
 /* Opt-in hover treatment for terminal windows that act as links/cards */
-.terminal--interactive:hover {
+.terminal-interactive:hover {
     border-color: var(--border-bright);
     box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.4), 0 24px 70px -20px rgba(0, 0, 0, 0.8), 0 0 30px -8px var(--accent-glow);
     transform: translateY(-3px);
@@ -182,11 +182,11 @@ html::-webkit-scrollbar {
 /* Opt-in slow ambient glow for the single hero terminal window. Restrained
    on purpose: a slow breathing highlight along the top edge, not a border
    that changes color or a constant pulse. */
-.terminal--ambient {
+.terminal-ambient {
     position: relative;
 }
 
-.terminal--ambient::before {
+.terminal-ambient::before {
     content: '';
     position: absolute;
     top: -1px;
@@ -208,7 +208,7 @@ html::-webkit-scrollbar {
     }
 }
 
-.terminal_bar {
+.terminal-bar {
     flex-shrink: 0;
     display: flex;
     align-items: center;
@@ -218,13 +218,13 @@ html::-webkit-scrollbar {
     border-bottom: 1px solid var(--border);
 }
 
-.terminal_dot {
+.terminal-dot {
     width: 12px;
     height: 12px;
     border-radius: 50%;
 }
 
-.terminal_title {
+.terminal-title {
     flex: 1;
     text-align: center;
     font-size: var(--text-xs);
@@ -232,7 +232,7 @@ html::-webkit-scrollbar {
     letter-spacing: 0.02em;
 }
 
-.glow_text {
+.glow-text {
     text-shadow: 0 0 20px var(--accent-glow);
 }
 
