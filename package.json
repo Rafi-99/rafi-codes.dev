@@ -28,7 +28,7 @@
         "@serwist/turbopack": "^9.5.12",
         "babel-plugin-react-compiler": "1.0.0",
         "esbuild": "^0.28.1",
-        "eslint": "^9",
+        "eslint": "^10",
         "eslint-config-next": "16.2.12",
         "serwist": "^9.5.12"
     }
