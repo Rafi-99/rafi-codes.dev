@@ -5,32 +5,43 @@ import Script from 'next/script';
 import { useRef, useState } from 'react';
 import { FaPaperPlane } from 'react-icons/fa';
 import TerminalWindow from '@components/TerminalWindow';
-import styles from '@styles/component/Form.module.css';
+import styles from '@styles/component/ContactForm.module.css';
 
 export default function ContactForm() {
-    const alert = useRef(null);
+    const button = useRef(null);
+    const label = useRef(null);
     const [ inputs, setInputs ] = useState({});
+
+    const setLabel = (text, mutate) => {
+        const element = label.current;
+        element.style.opacity = 0;
+
+        setTimeout(() => {
+            if (mutate) {
+                mutate();
+            }
+            
+            element.textContent = text;
+            element.style.opacity = 1;
+        }, 300);
+    };
 
     const displayAlert = (status) => {
         if (status === 'sending') {
-            alert.current.classList.remove(styles.successMessage, styles.errorMessage);
-            alert.current.textContent = 'Sending...';
+            setLabel('Sending...', () => button.current.classList.remove(styles.errorMessage));
         }
 
         else {
             if (status === 'success') {
-                alert.current.classList.add(styles.successMessage);
-                alert.current.textContent = 'Message sent. ✓';
+                setLabel('Message sent. ✓', () => button.current.classList.remove(styles.errorMessage));
             }
 
             else {
-                alert.current.classList.add(styles.errorMessage);
-                alert.current.textContent = 'Error. Try again. ✗';
+                setLabel('Error. Please try again.', () => button.current.classList.add(styles.errorMessage));
             }
 
             setTimeout(() => {
-                alert.current.classList.remove(styles.successMessage, styles.errorMessage);
-                alert.current.textContent = '$ send --message';
+                setLabel('$ send --message', () => button.current.classList.remove(styles.errorMessage));
             }, 3000);
         }
     };
@@ -78,7 +89,7 @@ export default function ContactForm() {
                     <label htmlFor='message'><span className={styles.comment}>#</span> Message</label>
                     <textarea rows='5' form='email-form' aria-label='Message' id='message' name='message' value={inputs.message || ''} onChange={handleChange} required />
 
-                    <button ref={alert} type='submit' aria-label='Send Message'>$ send --message</button>
+                    <button ref={button} type='submit' aria-label='Send Message'><span ref={label} className={styles.buttonLabel}>$ send --message</span></button>
                     <Script src={`https://www.google.com/recaptcha/enterprise.js?render=${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`} async defer />
                     <small>This site is protected by reCAPTCHA and the Google <Link href='https://policies.google.com/privacy' rel='noopener noreferrer' target='_blank'>Privacy Policy</Link> and <Link href='https://policies.google.com/terms' rel='noopener noreferrer' target='_blank'>Terms of Service</Link> apply.</small>
                 </form>

@@ -61,36 +61,41 @@
 .body form > button[type='submit'] {
     margin-top: 1.1rem;
     border: 1px solid var(--accent-dim);
-    border-radius: 4px;
-    background: transparent;
+    border-radius: 10px;
+    background: linear-gradient(180deg, color-mix(in srgb, var(--bg-raised) 100%, white 5%) 0%, var(--bg-raised) 100%);
     color: var(--accent);
     padding: 0.75rem 1rem;
     font-size: var(--text-base);
     font-weight: 600;
-    transition: background 0.3s ease, color 0.3s ease;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 10px rgba(0, 0, 0, 0.4);
+    transform: translateY(0);
+    will-change: transform;
+    transition: transform 0.1s ease-out;
 }
 
 .body form > button[type='submit']:hover {
-    background: var(--accent-dim);
-    color: var(--bg-terminal);
-    border-color: var(--accent-dim);
+    border-color: var(--accent);
+    color: var(--accent);
+    filter: brightness(1.2);
+    transform: translateY(-2px);
 }
 
 .body form > button[type='submit']:active {
-    transform: scale(0.95);
-    transition: transform 0.05s ease;
-}
-
-.body form > button[type='submit'].successMessage {
-    background: var(--accent-dim);
-    color: var(--bg-terminal);
-    border-color: var(--accent-dim);
+    border-color: var(--accent);
+    filter: brightness(0.9);
+    transform: translateY(1px);
+    transition: transform 0.05s ease-out;
 }
 
 .body form > button[type='submit'].errorMessage {
-    background: var(--red);
-    color: var(--bg-terminal);
+    color: var(--red);
     border-color: var(--red);
+    transition: color 0.3s ease-out, border-color 0.3s ease-out;
+}
+
+.buttonLabel {
+    display: inline-block;
+    transition: opacity 0.3s ease-out;
 }
 
 .body form > small {

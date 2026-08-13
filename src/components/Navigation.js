@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { MdClear, MdMenu } from 'react-icons/md';
 import { usePreventScroll } from '@react-aria/overlays';
 import Logo from '@components/Logo';
@@ -38,6 +38,7 @@ export default function Navigation() {
                 <Logo size={26} />
                 <span>rafi@codes</span>
                 <span className={styles.promptSymbol}>:~$</span>
+                {currentPath === '/' && <span className='cursor' />}
             </Link>
 
             <button type='button' className={styles.burger} onClick={() => setOpened(!opened)} aria-label='Toggle navigation menu' aria-expanded={opened}>
