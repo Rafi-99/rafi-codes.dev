@@ -50,13 +50,13 @@ export default function InteractiveTerminal({ active, onExit }) {
     const syncCursor = (e) => setCursorPos(e.target.selectionStart ?? e.target.value.length);
     const print = (command, output) => setHistory((h) => [ ...h, { command, output } ]);
 
-    const triggerExit = (label = 'exit') => {
+    const triggerExit = (label = 'exit', message = 'Logging out...') => {
         if (exiting) {
             return;
         }
 
         setExiting(true);
-        print(label, 'Logging out...');
+        print(label, message);
         setInput('');
         setCursorPos(0);
         setSuggestions([]);
@@ -90,10 +90,14 @@ export default function InteractiveTerminal({ active, onExit }) {
                 break;
             case 'cd': {
                 const target = arg.replace(/^~\/?/, '').replace(/\/$/, '') || 'home';
-                if (ROUTES[target] !== undefined) {
+                if (target === 'home') {
+                    triggerExit(trimmed, '→ ~');
+                }
+                else if (ROUTES[target] !== undefined) {
                     print(trimmed, `→ ${ROUTES[target] === '/' ? '~' : `~/${target}`}`);
                     setTimeout(() => router.push(ROUTES[target]), 400);
-                } else {
+                }
+                else {
                     print(trimmed, `cd: ${arg}: No such directory.`);
                 }
                 break;
@@ -201,7 +205,7 @@ export default function InteractiveTerminal({ active, onExit }) {
                         {input.slice(0, cursorPos)}
                         <span className={styles.blockCursor}>{input[cursorPos] ?? '\u00A0'}</span>
                         {input.slice(cursorPos + 1)}
-                        {!input && (<span className={styles.hint}>Type <strong>help</strong> for a full list of commands.</span>)}
+                        {!input && (<span className={styles.hint}>Type <strong>help</strong> for a full list of commands. Pssst — try: sudo make me a sandwich</span>)}
                     </span>
                     <input ref={inputRef} className={styles.hiddenInput} value={input}
                         onChange={(e) => {

@@ -48,8 +48,6 @@
 
 .inputLine {
     position: relative;
-    display: flex;
-    align-items: baseline;
     text-align: left;
     font-size: var(--text-md);
 }

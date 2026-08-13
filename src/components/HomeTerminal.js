@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import DateTime from '@components/DateTime';
 import TypeWriter from '@components/TypeWriter';
@@ -19,6 +19,17 @@ export default function HomeTerminal() {
         setTerminalMode(next);
         window.setTimeout(() => setCrackling(false), 420);
     };
+
+    useEffect(() => {
+        const handleReset = () => {
+            if (terminalMode) {
+                toggleMode(false);
+            }
+        };
+
+        window.addEventListener('home:reset', handleReset);
+        return () => window.removeEventListener('home:reset', handleReset);
+    }, [ terminalMode ]);
 
     return (
         <TerminalWindow title='rafi@codes: ~' className={styles.terminal} variant='ambient'>

@@ -19,6 +19,12 @@ export default function Navigation() {
     const [ previousPath, setPreviousPath ] = useState(currentPath);
     const [ opened, setOpened ] = useState(false);
 
+    const handleBrandClick = () => {
+        if (currentPath === '/') {
+            window.dispatchEvent(new Event('home:reset'));
+        }
+    };
+
     // Close the mobile menu on every route change. This is the "adjust
     // state during render" pattern React recommends instead of an effect
     // for exactly this case — comparing against a stored previous value
@@ -34,7 +40,7 @@ export default function Navigation() {
 
     return (
         <nav className={styles.nav}>
-            <Link href='/' className={styles.brand}>
+            <Link href='/' className={styles.brand} onClick={handleBrandClick}>
                 <Logo size={26} />
                 <span>rafi@codes</span>
                 <span className={styles.promptSymbol}>:~$</span>
