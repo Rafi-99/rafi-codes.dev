@@ -26,6 +26,8 @@ export const metadata = {
     }
 };
 
+export const revalidate = 3600;
+
 async function getAboutData() {
     try {
         const client = await getConnection();
