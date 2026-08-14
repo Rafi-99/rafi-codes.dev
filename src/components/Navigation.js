@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
 import { MdClear, MdMenu } from 'react-icons/md';
 import { usePreventScroll } from '@react-aria/overlays';
@@ -16,12 +16,14 @@ const links = [
 
 export default function Navigation() {
     const currentPath = usePathname();
+    const router = useRouter();
     const [ previousPath, setPreviousPath ] = useState(currentPath);
     const [ opened, setOpened ] = useState(false);
 
     const handleBrandClick = () => {
         if (currentPath === '/') {
             window.dispatchEvent(new Event('home:reset'));
+            router.refresh();
         }
     };
 

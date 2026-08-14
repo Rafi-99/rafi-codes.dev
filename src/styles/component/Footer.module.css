@@ -2,7 +2,7 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    padding: 1.75rem 1rem 2.25rem;
+    padding: clamp(1rem, 3vw, 1.75rem) clamp(1.25rem, 4vw, 3rem);
     background: var(--bg-raised);
     border-top: 1px solid var(--border);
     color: var(--text-muted);
@@ -12,7 +12,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 0.75rem;
+    gap: 5px;
     font-size: var(--text-sm);
 }
 
