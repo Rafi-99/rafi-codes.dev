@@ -39,11 +39,15 @@ src/
 ```
 
 ## Features
-- 💬 **Contact Form** — Sends emails via Gmail OAuth2, protected with reCAPTCHA Enterprise.
-- 📈 **Live Interactive Environment** — Home page displays the current date & time inside an interactive terminal.
-- 🎨 **3D Ambient Background** — Developed with React Three Fiber.
-- 📱 **PWA** — Install as an app and experience mobile first design.
-- 🔍 **SEO** — Sitemap, robots, manifest, and Open Graph metadata.
+- 🖥️ **Interactive Terminal** — A real shell on the home page, not just a div: routes the site via `cd`, keeps command history (↑/↓), autocompletes, and has Easter eggs for the curious.
+- 🐙 **GitHub Widget** — Live stats for the most recent repositories, with each repository's languages broken down and ranked by actual usage percentage.
+- 📊 **Live Résumé Data** — Skills and work experience are fetched live from MongoDB and rendered as real syntax-highlighted `skills.json` and job description cards.
+- 💬 **Contact Form** — Sends email via Gmail OAuth2 + Nodemailer, protected by reCAPTCHA Enterprise. Monitored with a scheduled cron health check.
+- 🎨 **3D Ambient Background** — A slow-drifting starfield built with React Three Fiber, layered under every page and tuned to respect `prefers-reduced-motion`.
+- 📐 **Fluid, Container-Query-Driven Design** — No hardcoded breakpoints: implemented a mobile-first approach that reacts to the container's real width, not the viewport.
+- 🖼️ **Dynamic Open Graph Images** — Social preview cards are generated on the fly per page via `next/og`, not static screenshots.
+- 📱 **Installable PWA** — Full offline fallback and custom app icons. Installable on any device. Allows users to experience the website as an app.
+- 🔍 **Complete SEO** — Sitemap, robots, manifest, and per-page Open Graph/Twitter metadata. All generated through Next's Metadata API.
 
 ## Coming Soon
 - Stay tuned for more features! This README will be updated with every new feature release.
