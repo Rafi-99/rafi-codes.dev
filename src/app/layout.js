@@ -56,7 +56,7 @@ export const viewport = {
 
 export default function RootLayout({ children }) {
     return (
-        <html lang='en' className={jetbrainsMono.variable} data-scroll-behavior="smooth">
+        <html lang='en' className={jetbrainsMono.variable} data-scroll-behavior='smooth'>
             <body>
                 <AmbientBackground />
                 <Navigation />

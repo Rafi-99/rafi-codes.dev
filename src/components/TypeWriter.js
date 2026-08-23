@@ -16,7 +16,7 @@ export default function TypeWriter() {
         <p className={styles.textType}>
             <span className={styles.text}>
                 {currentWord}
-                <span className="cursor" />
+                <span className='cursor' />
             </span>
         </p>
     );

@@ -52,13 +52,13 @@ export default async function GithubWidget() {
     }
 
     return (
-        <TerminalWindow title="rafi@codes: ~/github" className={styles.terminal}>
+        <TerminalWindow title='rafi@codes: ~/github' className={styles.terminal}>
             <div className={styles.body}>
                 <p className={styles.heading}><span className={styles.promptSymbol}>$</span> gh repo list --limit 5</p>
                 <ul className={styles.list}>
                     {repositories.map((repository) => (
                         <li key={repository.id}>
-                            <Link href={repository.html_url} target="_blank" rel="noopener noreferrer" className={styles.repoLink}>
+                            <Link href={repository.html_url} target='_blank' rel='noopener noreferrer' className={styles.repoLink}>
                                 <span className={styles.repoName}>{repository.name}</span>
                                 <SiGithub />
                             </Link>

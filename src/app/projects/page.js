@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { generateOpenGraphImage } from '@utils/OpenGraph';
-import { GrReddit, GrHeroku } from "react-icons/gr";
+import { GrReddit, GrHeroku } from 'react-icons/gr';
 import { SiGithub, SiGradle, SiDiscord, SiYoutube, SiNodedotjs, SiNextdotjs, SiMongodb, SiSquarespace } from 'react-icons/si';
 import FadeInSection from '@components/FadeInSection';
 import TerminalWindow from '@components/TerminalWindow';

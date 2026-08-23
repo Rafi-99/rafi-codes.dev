@@ -2,7 +2,7 @@
     position: relative;
     z-index: 1;
     width: 100%;
-    padding: clamp(1rem, 3vw, 1.75rem) clamp(1.25rem, 4vw, 3rem);
+    padding: 1.25rem 1rem 1.5rem;
     background: var(--bg-raised);
     border-top: 1px solid var(--border);
     color: var(--text-muted);
@@ -42,4 +42,26 @@
 .icons > a:hover {
     color: var(--accent);
     transform: translateY(-2px);
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-xs);
+}
+
+.links a:first-child::after {
+    content: '·';
+    margin-left: 0.5rem;
+    color: var(--text-dim);
+}
+
+.links a {
+    color: var(--text-dim);
+    transition: color 0.2s ease;
+}
+
+.links a:hover {
+    color: var(--accent);
 }
