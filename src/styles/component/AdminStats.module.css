@@ -1,0 +1,37 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    width: 100%;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: var(--space-sm);
+    width: 100%;
+}
+
+.card {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background: var(--bg-raised);
+    padding: var(--space-sm);
+    text-align: left;
+}
+
+.scoreCard {
+    width: 100%;
+}
+
+.value {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.label {
+    color: var(--text-muted);
+    font-size: var(--text-xs);
+    margin-top: 0.2rem;
+}

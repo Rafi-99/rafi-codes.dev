@@ -12,11 +12,6 @@
     font-size: var(--text-base);
 }
 
-.promptSymbol {
-    color: var(--accent);
-    margin-right: 0.5rem;
-}
-
 .bar {
     width: 220px;
     height: 3px;

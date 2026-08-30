@@ -1,0 +1,154 @@
+.wheel {
+    container-type: inline-size;
+    position: fixed;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.state {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip-path: inset(50%);
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.backdrop {
+    position: absolute;
+    inset: 0;
+    background: color-mix(in srgb, var(--bg) 55%, transparent);
+    backdrop-filter: blur(0px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease, backdrop-filter 0.35s ease;
+}
+
+.wheel:has(.state:checked) .backdrop {
+    opacity: 1;
+    backdrop-filter: blur(8px);
+    pointer-events: auto;
+}
+
+.hub {
+    position: absolute;
+    top: calc(100% - var(--footer-half-height));
+    left: calc(100% - var(--space-md) - 22px);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    border: 1.5px solid color-mix(in srgb, var(--text-bright) 35%, transparent);
+    background: var(--bg-terminal);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+    pointer-events: auto;
+    transition: top 0.5s cubic-bezier(0.34, 1.15, 0.4, 1), left 0.5s cubic-bezier(0.34, 1.15, 0.4, 1), background 0.3s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.hub:hover {
+    border-color: var(--accent);
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.6), 0 0 20px var(--accent-glow);
+}
+
+.wheel:has(.state:focus-visible) .hub {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.hubLogo {
+    transition: opacity 0.2s ease;
+}
+
+.hubClose {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    line-height: 1;
+    color: var(--bg-terminal);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.wheel:has(.state:checked) .hub {
+    top: 50%;
+    left: 50%;
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+.wheel:has(.state:checked) .hubLogo {
+    opacity: 0;
+}
+
+.wheel:has(.state:checked) .hubClose {
+    opacity: 1;
+}
+
+.orbit {
+    position: absolute;
+    inset: 0;
+}
+
+.item {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    translate: calc(-50% + cos(var(--angle)) * 150px) calc(-50% + sin(var(--angle)) * 150px);
+    transition: translate 0.45s cubic-bezier(0.34, 1.35, 0.45, 1);
+}
+
+@container (max-width: 480px) {
+    .item {
+        translate: calc(-50% + cos(var(--angle)) * 105px) calc(-50% + sin(var(--angle)) * 105px);
+    }
+}
+
+.item a,
+.itemButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: 1px solid var(--border-bright);
+    background: var(--bg-raised);
+    color: var(--text-muted);
+    font-size: 1.35rem;
+    transition: border-color 0.2s ease, color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+}
+
+.item a:hover,
+.item a:focus-visible,
+.itemButton:hover,
+.itemButton:focus-visible {
+    border-color: var(--accent);
+    color: var(--accent);
+    background: color-mix(in srgb, var(--bg-raised) 85%, var(--accent) 8%);
+    transform: scale(1.08);
+    outline: none;
+}
+
+.itemSelf {
+    border-color: var(--accent) !important;
+    color: var(--accent) !important;
+}

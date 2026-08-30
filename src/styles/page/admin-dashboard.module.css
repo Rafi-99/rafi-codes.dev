@@ -1,0 +1,63 @@
+.wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-lg) 1.25rem;
+}
+
+.dashboardBody {
+    container-type: inline-size;
+    width: 100%;
+    max-width: var(--max-width);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+    width: 100%;
+}
+
+.sectionLabel {
+    color: var(--text-dim);
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: var(--space-xs);
+}
+
+.list {
+    width: 100%;
+    max-width: 360px;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-xs);
+}
+
+.list form {
+    display: contents;
+}
+
+.utilitiesList {
+    width: 100%;
+    max-width: 360px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-sm);
+}
+
+.utilitiesList a {
+    white-space: nowrap;
+}
+
+@container (max-width: 480px) {
+    .utilitiesList {
+        max-width: none;
+    }
+}

@@ -1,27 +1,7 @@
-.wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: clamp(2.75rem, 8vw, 4.5rem) 1.25rem var(--space-lg);
-}
-
 .intro {
     width: 100%;
     max-width: var(--max-width-narrow);
     margin-bottom: var(--space-md);
-}
-
-.promptLine {
-    text-align: center;
-    font-size: var(--text-xl);
-    font-weight: 700;
-    color: var(--text-bright);
-    margin-bottom: var(--space-sm);
-}
-
-.promptSymbol {
-    color: var(--accent);
 }
 
 .terminal {

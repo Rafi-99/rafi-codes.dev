@@ -34,11 +34,6 @@
     text-align: left;
 }
 
-.prompt {
-    color: var(--accent);
-    margin-right: 0.4rem;
-}
-
 .output {
     color: var(--text-muted);
     font-size: var(--text-md);

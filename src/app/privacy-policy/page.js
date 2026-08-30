@@ -1,31 +1,27 @@
 import Link from 'next/link';
-import { generateOpenGraphImage } from '@utils/OpenGraph';
-import TerminalWindow from '@components/TerminalWindow';
+import { buildPageMetadata } from '@utils/shared/OpenGraph';
+import TerminalWindow from '@components/shared/TerminalWindow';
 import styles from '@styles/page/legal.module.css';
 
-export const metadata = {
+export const metadata = buildPageMetadata({
     title: 'Privacy Policy',
     description: 'This page contains the privacy policy for the site.',
-    alternates: { canonical: '/privacy-policy' },
-    openGraph: {
-        title: 'Rafi Codes | Privacy Policy',
-        description: 'How Rafi Codes handles information submitted through the contact form.',
-        url: `${process.env.SITE_URL}/privacy-policy`,
-        images: [{ url: generateOpenGraphImage({ title: 'Privacy Policy', description: 'How your information is handled.', prompt: '$ cat privacy-policy.md', tag: 'Legal', accent: '#34d399' }), width: 1200, height: 630, alt: 'Rafi Codes - Privacy Policy | Open Graph Card' }]
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Rafi Codes | Privacy Policy',
-        description: 'How Rafi Codes handles information submitted through the contact form.',
-        images: [ generateOpenGraphImage({ title: 'Privacy Policy', description: 'How your information is handled.', prompt: '$ cat privacy-policy.md', tag: 'Legal', accent: '#34d399' }) ]
+    path: '/privacy-policy',
+    socialDescription: 'How Rafi Codes handles information submitted through the contact form.',
+    image: {
+        title: 'Privacy Policy',
+        description: 'How your information is handled.',
+        prompt: '$ cat privacy-policy.md',
+        tag: 'Legal',
+        accent: '#34d399'
     }
-};
+});
 
 export default function Privacy() {
     return (
-        <div className={styles.wrapper}>
+        <div className='page-wrapper'>
             <div className={styles.intro}>
-                <h1 className={styles.promptLine}><span className={styles.promptSymbol}>$</span> cat privacy-policy.md</h1>
+                <h1 className='prompt-line'><span className='prompt-symbol'>$</span> cat privacy-policy.md</h1>
             </div>
 
             <TerminalWindow title='rafi@codes: ~/privacy-policy' className={styles.terminal}>

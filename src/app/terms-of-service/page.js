@@ -1,31 +1,27 @@
 import Link from 'next/link';
-import { generateOpenGraphImage } from '@utils/OpenGraph';
-import TerminalWindow from '@components/TerminalWindow';
+import { buildPageMetadata } from '@utils/shared/OpenGraph';
+import TerminalWindow from '@components/shared/TerminalWindow';
 import styles from '@styles/page/legal.module.css';
 
-export const metadata = {
+export const metadata = buildPageMetadata({
     title: 'Terms of Service',
     description: 'This page contains the terms of service for the site.',
-    alternates: { canonical: '/terms-of-service' },
-    openGraph: {
-        title: 'Rafi Codes | Terms of Service',
-        description: 'The terms that apply when using the contact form on Rafi Codes.',
-        url: `${process.env.SITE_URL}/terms-of-service`,
-        images: [{ url: generateOpenGraphImage({ title: 'Terms of Service', description: 'Terms for using this site.', prompt: '$ cat terms-of-service.md', tag: 'Legal', accent: '#34d399' }), width: 1200, height: 630, alt: 'Rafi Codes - Terms of Service | Open Graph Card' }]
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Rafi Codes | Terms of Service',
-        description: 'The terms that apply when using the contact form on Rafi Codes.',
-        images: [ generateOpenGraphImage({ title: 'Terms of Service', description: 'Terms for using this site.', prompt: '$ cat terms-of-service.md', tag: 'Legal', accent: '#34d399' }) ]
+    path: '/terms-of-service',
+    socialDescription: 'The terms that apply when using the contact form on Rafi Codes.',
+    image: {
+        title: 'Terms of Service',
+        description: 'Terms for using this site.',
+        prompt: '$ cat terms-of-service.md',
+        tag: 'Legal',
+        accent: '#34d399'
     }
-};
+});
 
 export default function Terms() {
     return (
-        <div className={styles.wrapper}>
+        <div className='page-wrapper'>
             <div className={styles.intro}>
-                <h1 className={styles.promptLine}><span className={styles.promptSymbol}>$</span> cat terms-of-service.md</h1>
+                <h1 className='prompt-line'><span className='prompt-symbol'>$</span> cat terms-of-service.md</h1>
             </div>
 
             <TerminalWindow title='rafi@codes: ~/terms' className={styles.terminal}>

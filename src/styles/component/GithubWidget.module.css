@@ -20,10 +20,6 @@
     margin-bottom: var(--space-sm);
 }
 
-.promptSymbol {
-    color: var(--accent);
-}
-
 .list {
     display: flex;
     flex-direction: column;

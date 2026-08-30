@@ -3,17 +3,17 @@
 import Link from 'next/link';
 import { OrbitControls, Stars } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import Model from '@components/Model';
+import Model from '@components/shared/Model';
 import styles from '@styles/page/error.module.css';
 
 export default function NotFound() {
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.text}>
+        <div className='page-flex status-wrapper'>
+            <div className='status-text'>
                 <p className={styles.code}>404</p>
                 <h1>Not Found</h1>
                 <p>The page you&apos;re looking for doesn&apos;t exist.</p>
-                <Link href='/' className={styles.home}>$ cd ~</Link>
+                <Link href='/' className='pushable accent'>$ cd ~</Link>
             </div>
 
             <div className={styles.shapes}>
@@ -28,4 +28,4 @@ export default function NotFound() {
             </div>
         </div>
     );
-};
+}

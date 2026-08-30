@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import Link from 'next/link';
 import { OrbitControls, Stars } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
-import Model from '@components/Model';
+import Model from '@components/shared/Model';
 import styles from '@styles/page/error.module.css';
 
 export default function Error({ error, reset }) {
@@ -13,12 +13,15 @@ export default function Error({ error, reset }) {
     }, [ error ]);
 
     return (
-        <div className={styles.wrapper}>
-            <div className={styles.text}>
+        <div className='page-flex status-wrapper'>
+            <div className='status-text'>
                 <p className={styles.code}>500</p>
                 <h1>Internal Server Error</h1>
                 <p>Sorry, this was caused by an issue on our end.</p>
-                <Link href='/' className={styles.home}>$ cd ~</Link>
+                <div className='status-actions'>
+                    <button type='button' onClick={() => reset()} className='pushable accent'>$ retry</button>
+                    <Link href='/' className='pushable accent'>$ cd ~</Link>
+                </div>
             </div>
 
             <div className={styles.shapes}>
@@ -33,4 +36,4 @@ export default function Error({ error, reset }) {
             </div>
         </div>
     );
-};
+}

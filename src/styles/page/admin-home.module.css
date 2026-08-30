@@ -1,0 +1,32 @@
+.intro {
+    width: 100%;
+    max-width: 360px;
+    margin-bottom: var(--space-md);
+}
+
+.terminal {
+    width: 100%;
+    max-width: 360px;
+}
+
+.card {
+    padding: var(--space-md);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.error {
+    color: var(--red);
+    font-size: var(--text-sm);
+}
+
+.forgot {
+    color: var(--text-dim);
+    font-size: var(--text-sm);
+}
+
+.forgot:hover {
+    color: var(--accent);
+}

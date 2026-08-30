@@ -37,54 +37,9 @@
     color: var(--accent-dim);
 }
 
-.body form > input,
-.body form > textarea {
-    width: 100%;
-    border: 1px solid var(--border);
-    border-radius: 4px;
-    resize: none;
-    padding: 0.7rem 0.85rem;
-    background: var(--bg-raised);
-    color: var(--text-bright);
-    font-family: var(--font-mono);
-    font-size: var(--text-base);
-    transition: border-color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.body form > input:focus,
-.body form > textarea:focus {
-    outline: none;
-    border-color: var(--accent-dim);
-    box-shadow: 0 0 0 3px var(--accent-glow);
-}
-
 .body form > button[type='submit'] {
     margin-top: 1.1rem;
-    border: 1px solid var(--accent-dim);
-    border-radius: 10px;
-    background: linear-gradient(180deg, color-mix(in srgb, var(--bg-raised) 100%, white 5%) 0%, var(--bg-raised) 100%);
-    color: var(--accent);
-    padding: 0.75rem 1rem;
-    font-size: var(--text-base);
     font-weight: 600;
-    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08), 0 4px 10px rgba(0, 0, 0, 0.4);
-    transform: translateY(0);
-    will-change: transform;
-    transition: transform 0.1s ease-out;
-}
-
-.body form > button[type='submit']:hover {
-    border-color: var(--accent);
-    color: var(--accent);
-    filter: brightness(1.2);
-    transform: translateY(-2px);
-}
-
-.body form > button[type='submit']:active {
-    border-color: var(--accent);
-    filter: brightness(0.9);
-    transform: translateY(1px);
-    transition: transform 0.05s ease-out;
 }
 
 .body form > button[type='submit'].errorMessage {

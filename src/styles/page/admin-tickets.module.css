@@ -1,0 +1,6 @@
+.wrapper {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-lg) 1.25rem;
+}

@@ -1,29 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { generateOpenGraphImage } from '@utils/OpenGraph';
+import { buildPageMetadata } from '@utils/shared/OpenGraph';
 import { GrReddit, GrHeroku } from 'react-icons/gr';
 import { SiGithub, SiGradle, SiDiscord, SiYoutube, SiNodedotjs, SiNextdotjs, SiMongodb, SiSquarespace } from 'react-icons/si';
-import FadeInSection from '@components/FadeInSection';
-import TerminalWindow from '@components/TerminalWindow';
+import FadeInSection from '@components/shared/FadeInSection';
+import TerminalWindow from '@components/shared/TerminalWindow';
 import styles from '@styles/page/projects.module.css';
 
-export const metadata = {
+export const metadata = buildPageMetadata({
     title: 'Projects',
     description: 'Project showcase.',
-    alternates: { canonical: '/projects' },
-    openGraph: {
-        title: 'Rafi Codes | Projects',
-        description: 'A collection of my recent projects.',
-        url: `${process.env.SITE_URL}/projects`,
-        images: [{ url: generateOpenGraphImage({ title: 'My Projects', description: 'Take a look at what I have been working on!', prompt: '$ ls ./projects', tag: 'Projects', accent: '#fbbf24' }), width: 1200, height: 630, alt: 'Rafi Codes - Projects | Open Graph Card' }]
-    },
-    twitter: {
-        card: 'summary_large_image',
-        title: 'Rafi Codes | Projects',
-        description: 'A collection of my recent projects.',
-        images: [ generateOpenGraphImage({ title: 'My Projects', description: 'Take a look at what I have been working on!', prompt: '$ ls ./projects', tag: 'Projects', accent: '#fbbf24' }) ]
+    path: '/projects',
+    socialDescription: 'A collection of my recent projects.',
+    image: {
+        title: 'Projects',
+        description: 'Take a look at what I have been working on!',
+        prompt: '$ ls ./repos',
+        tag: 'Projects',
+        accent: '#fbbf24'
     }
-};
+});
 
 const projects = [
     {
@@ -40,7 +36,7 @@ const projects = [
         status: 'Archived',
         repo: 'https://www.github.com/Rafi-99/Meme-API',
         description: 'A simple Node.js Express API for fetching memes off Reddit, deployed with Heroku. Each GET request returns a random JSON response with relevant information about the meme. Compatible with most subreddits.',
-        tools: [ <SiNodedotjs key='node' />, <GrReddit key='reddit' />, <GrHeroku key ='heroku' /> ],
+        tools: [ <SiNodedotjs key='node' />, <GrReddit key='reddit' />, <GrHeroku key='heroku' /> ],
     },
     {
         image: '/assets/images/nextjs.png',
@@ -54,24 +50,28 @@ const projects = [
 
 export default function Projects() {
     return (
-        <div className={styles.wrapper}>
+        <div className='page-wrapper'>
             <div className={styles.intro}>
-                <h1><span className={styles.promptSymbol}>$</span> ls ./projects</h1>
+                <h1 className='prompt-line'><span className='prompt-symbol'>$</span> ls ./repos</h1>
                 <p>Come check out what I&apos;ve been working on recently!</p>
             </div>
             <div className={styles.cardsContainer}>
                 {projects.map((project, index) => (
                     <FadeInSection key={project.title} delay={index * 0.15}>
                         <TerminalWindow title={`${project.title.replace(/\s+/g, '-')}/README.md`} variant='interactive'>
-                        <div className={styles.cardBody}>
-                            <div className={styles.thumb}><Image src={project.image} fill sizes='(min-width: 900px) 45vw, 100vw' alt={`Project thumbnail: ${project.title}`} /></div>
-                            <h2>
-                                <Link className={styles.titleGroup} href={project.repo} rel='noopener noreferrer' target='_blank' aria-label={`Link to Rafi's GitHub project | ${project.title}`}>{project.title}&nbsp;<SiGithub /></Link>
-                                <span className={styles.status} data-status={project.status}>{project.status}</span>
-                            </h2>
-                            <p>{project.description}</p>
-                            <div className={styles.tools}>{project.tools}</div>
-                        </div>
+                            <div className={styles.cardBody}>
+                                <div className={styles.thumb}>
+                                    <Image src={project.image} fill sizes='(min-width: 900px) 45vw, 100vw' alt={`Project thumbnail: ${project.title}`} />
+                                </div>
+                                <h2>
+                                    <Link className={styles.titleGroup} href={project.repo} rel='noopener noreferrer' target='_blank' aria-label={`Link to Rafi's GitHub project | ${project.title}`}>
+                                        {project.title}&nbsp;<SiGithub />
+                                    </Link>
+                                    <span className={styles.status} data-status={project.status}>{project.status}</span>
+                                </h2>
+                                <p>{project.description}</p>
+                                <div className={styles.tools}>{project.tools}</div>
+                            </div>
                         </TerminalWindow>
                     </FadeInSection>
                 ))}

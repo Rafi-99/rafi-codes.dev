@@ -1,0 +1,20 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+}
+
+.error {
+    color: var(--red);
+    font-size: var(--text-sm);
+}
+
+.success {
+    color: var(--accent);
+    font-size: var(--text-sm);
+}
+
+.redirectNote {
+    color: var(--text-dim);
+    font-size: var(--text-sm);
+}

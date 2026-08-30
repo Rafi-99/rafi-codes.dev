@@ -1,5 +1,5 @@
 export default function sitemap() {
-    const routes = ['', '/about', '/projects', '/contact'];
+    const routes = ['', '/about', '/projects', '/contact', '/privacy-policy', '/terms-of-service'];
 
     return routes.map((route) => ({
         url: `${process.env.SITE_URL}${route}`,

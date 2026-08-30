@@ -1,11 +1,3 @@
-.wrapper {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: clamp(2.75rem, 8vw, 4.5rem) 1.25rem var(--space-lg);
-}
-
 .intro {
     text-align: center;
     max-width: var(--max-width);
@@ -16,11 +8,6 @@
     font-size: var(--text-xl);
     color: var(--text-bright);
     margin-bottom: 0.5rem;
-}
-
-.promptSymbol {
-    color: var(--accent);
-    margin-right: 0.5rem;
 }
 
 .intro p {
@@ -121,7 +108,7 @@
 
 @keyframes statusPulse {
     0%, 100% { opacity: 1; }
-    50% { opacity: 0.4; }
+    50% { opacity: 0.5; }
 }
 
 .tools {

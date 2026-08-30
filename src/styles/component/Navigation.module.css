@@ -24,10 +24,6 @@
     color: var(--text-bright);
 }
 
-.promptSymbol {
-    color: var(--accent);
-}
-
 .nav > ul {
     display: flex;
     gap: clamp(1.25rem, 3vw, 2rem);
@@ -46,7 +42,7 @@
     color: var(--text-bright);
 }
 
-.nav ul a .promptSymbol {
+.nav ul a :global(.prompt-symbol) {
     color: var(--amber);
 }
 
@@ -74,15 +70,14 @@
         top: 64px;
         left: 0;
         width: 100%;
+        height: calc(100dvh - 64px);
         background-color: color-mix(in srgb, var(--bg) 97%, transparent);
-        backdrop-filter: blur(8px);
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 0;
         padding: 0 clamp(1.25rem, 4vw, 3rem);
-        overflow: hidden;
-        transition: height 0.35s ease;
+        transition: clip-path 0.35s ease;
     }
 
     ul.open a,
@@ -94,11 +89,13 @@
     }
 
     ul.open {
-        height: calc(100dvh - 64px);
+        clip-path: inset(0 0 0% 0);
+        pointer-events: auto;
     }
 
     ul.closed {
-        height: 0px;
+        clip-path: inset(0 0 100% 0);
+        pointer-events: none;
     }
 
     .burger {
