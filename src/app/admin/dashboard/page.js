@@ -16,11 +16,12 @@ const HEALTH_IDS = [ 'www', 'memes', 'portal', 'crypto', 'mongo', 'github', 'goo
 export default async function AdminDashboard() {
     await redirectIfUnauthenticated();
 
-    const [stats, healthResults] = await Promise.all([ getAdminStats(), runHealthChecks(HEALTH_IDS) ]);
+    const [ stats, healthResults ] = await Promise.all([ getAdminStats(), runHealthChecks(HEALTH_IDS) ]);
     const initialScore = { up: Object.values(healthResults).filter((response) => response.ok).length, total: HEALTH_IDS.length };
-    const commitSha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7);
-    const commitMessage = process.env.VERCEL_GIT_COMMIT_MESSAGE;
+    const environment = process.env.VERCEL_ENV.charAt(0).toUpperCase() + process.env.VERCEL_ENV.slice(1);
     const branch = process.env.VERCEL_GIT_COMMIT_REF;
+    const commitSha = process.env.VERCEL_GIT_COMMIT_SHA?.slice(0, 7);
+    const commitMessage = process.env.VERCEL_GIT_COMMIT_MESSAGE?.split('\n')[0];
 
     const healthSections = [
         {
@@ -83,8 +84,8 @@ export default async function AdminDashboard() {
             items: [
                 {
                     id: 'deployment',
-                    name: commitSha ? `${branch}@${commitSha}` : 'Local Development',
-                    description: commitMessage || (!commitSha ? 'Not available' : undefined),
+                    name: commitSha ? `${environment}: ${branch}@${commitSha}` : `${environment}: master@local `,
+                    description: commitMessage ? commitMessage : 'No commit message available',
                     static: true,
                     state: commitSha ? 'active' : 'pending'
                 }
