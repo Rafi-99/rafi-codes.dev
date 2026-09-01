@@ -28,7 +28,7 @@ export default async function AdminLogin({ searchParams }) {
                 <div className={styles.card}>
                     <p>Welcome back. Please sign in.</p>
                     <AdminForm fields={[{ name: 'email', type: 'email', placeholder: 'Email', autoComplete: 'username' }, { name: 'password', type: 'password', placeholder: 'Password', autoComplete: 'current-password' }]} endpoint='/api/admin/auth/login' submitLabel='Log in' loadingLabel='Checking...' redirectTo='/admin/dashboard' initialError={errorMessage} />
-                    <Link href='/api/admin/auth/google' className='pushable accent'>Sign in with Google</Link>
+                    <a href='/api/admin/auth/google' className='pushable accent'>Sign in with Google</a>
                     <Link href='/admin/forgot-password' className={styles.forgot}>Forgot password?</Link>
                 </div>
             </TerminalWindow>
