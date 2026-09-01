@@ -1,8 +1,11 @@
+import packageJson from '@root/package.json';
+
 export default function manifest() {
     return {
         name: 'Rafi Codes',
         short_name: 'Rafi Codes',
         description: 'Rafi Codes | Software Engineer',
+        version: packageJson.version,
         start_url: '/',
         scope: '/',
         display: 'standalone',

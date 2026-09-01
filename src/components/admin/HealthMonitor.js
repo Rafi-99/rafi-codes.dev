@@ -35,6 +35,24 @@ export default function HealthMonitor({ sections, initialResults }) {
     const [ results, setResults ] = useState(initialResults ?? {});
     const [ retrying, setRetrying ] = useState({});
 
+    /**
+     * Clears only the IDs that were part of a failed request, so a full
+     * periodic poll failing correctly grays out the whole board, while a
+     * single retry failing only grays out that one item — never wiping
+     * results for services that weren't part of this particular request.
+     */
+    const clearFailedResults = useCallback((failedIds) => {
+        setResults((previous) => {
+            const next = { ...previous };
+
+            failedIds.forEach((id) => {
+                delete next[id];
+            });
+
+            return next;
+        });
+    }, []);
+
     const fetchChecks = useCallback(async (targetIds, ignoreCache = false) => {
         if (!targetIds.length) {
             return;
@@ -45,6 +63,7 @@ export default function HealthMonitor({ sections, initialResults }) {
             const response = await fetch(url);
 
             if (!response.ok) {
+                clearFailedResults(targetIds);
                 return;
             }
 
@@ -53,10 +72,11 @@ export default function HealthMonitor({ sections, initialResults }) {
         }
         catch (error) {
             console.error('Failed to poll health checks:', error);
+            clearFailedResults(targetIds);
         }
-    }, []);
+    }, [ clearFailedResults ]);
 
-    // This interval is purely the periodic refresh.
+    // No immediate call — results already arrive seeded from the server (see page.js). This interval is purely the periodic refresh.
     useEffect(() => {
         const interval = setInterval(() => fetchChecks(allIds), POLL_INTERVAL_MS);
         return () => clearInterval(interval);
