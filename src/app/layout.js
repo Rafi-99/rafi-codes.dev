@@ -13,6 +13,7 @@ const defaultOpenGraphImage = generateOpenGraphImage({ title: 'Rafi Codes', desc
 
 export const metadata = {
     metadataBase: new URL(process.env.SITE_URL),
+    applicationName: 'Rafi Codes',
     title: {
         default: 'Rafi Codes',
         template: 'Rafi Codes | %s',
@@ -21,14 +22,19 @@ export const metadata = {
     manifest: '/manifest.webmanifest',
     icons: {
         icon: [
-            { url: '/assets/favicons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
-            { url: '/assets/favicons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
-            { url: '/assets/favicons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
-            { url: '/assets/favicons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
+            { url: '/assets/icons/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+            { url: '/assets/icons/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+            { url: '/assets/icons/android-chrome-192x192.png', sizes: '192x192', type: 'image/png' },
+            { url: '/assets/icons/android-chrome-512x512.png', sizes: '512x512', type: 'image/png' }
         ],
         other: [
-            { rel: 'mask-icon', url: '/assets/favicons/safari-pinned-tab.svg', color: '#6ee7a5' }
+            { rel: 'mask-icon', url: '/assets/icons/safari-pinned-tab.svg', color: '#6ee7a5' }
         ],
+    },
+    appleWebApp: {
+        capable: true,
+        statusBarStyle: 'default',
+        title: 'Rafi Codes'
     },
     other: {
         'msapplication-TileColor': '#0d1117',
