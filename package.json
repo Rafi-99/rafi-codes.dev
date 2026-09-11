@@ -15,7 +15,7 @@
         "@vercel/analytics": "^2.0.1",
         "@vercel/speed-insights": "^2.0.0",
         "framer-motion": "^13.2.0",
-        "googleapis": "^178.0.0",
+        "googleapis": "^178.1.1",
         "hash-wasm": "^4.12.0",
         "mongodb": "^7.6.0",
         "next": "^16.3.4",
