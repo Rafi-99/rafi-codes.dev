@@ -26,11 +26,11 @@
         "three": "^0.187.0"
     },
     "devDependencies": {
-        "@serwist/turbopack": "^9.5.13",
+        "@serwist/turbopack": "^9.5.15",
         "babel-plugin-react-compiler": "1.0.0",
         "esbuild": "^0.28.2",
         "eslint": "^10",
-        "eslint-config-next": "16.3.8",
+        "eslint-config-next": "16.4.6",
         "serwist": "^9.5.12"
     }
 }
