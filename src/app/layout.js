@@ -34,6 +34,7 @@ export const metadata = {
     },
     appleWebApp: {
         capable: true,
+        startupImage: '/apple-icon.png',
         statusBarStyle: 'default',
         title: 'Rafi Codes'
     },

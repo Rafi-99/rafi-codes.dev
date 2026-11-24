@@ -2,6 +2,9 @@ import { NextResponse } from 'next/server';
 import { sendMail } from '@utils/shared/MailService';
 import { callRecaptchaAssessment } from '@utils/shared/Recaptcha';
 
+// reCAPTCHA + token refresh + SMTP are three sequential round trips, which can outrun Vercel's 10s default on a cold start.
+export const maxDuration = 30;
+
 const invalidInput = (input) => input === null || input === undefined || input === '';
 
 // Vercel Cron pings this route weekly as a health check for the mail pipeline.

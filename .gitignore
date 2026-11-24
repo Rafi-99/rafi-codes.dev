@@ -12,3 +12,6 @@ build
 **/public/sw.js
 **/public/sw.js.map
 **/public/swe-worker-*.js
+
+# Database Backups
+backups/
